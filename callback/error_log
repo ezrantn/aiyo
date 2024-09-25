@@ -1,0 +1,7 @@
+[17-Sep-2024 02:12:13 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'mesy7597_xxxxxxxx'@'localhost' (using password: YES) in /home/mesy7597/public_html/goldenphoenix/db_config.php on line 8
+[17-Sep-2024 02:21:33 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'mesy7597_xxxxxxxx'@'localhost' (using password: YES) in /home/mesy7597/public_html/goldenphoenix/db_config.php on line 8
+[17-Sep-2024 02:21:44 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'mesy7597_xxxxxxxx'@'localhost' (using password: YES) in /home/mesy7597/public_html/goldenphoenix/db_config.php on line 8
+[17-Sep-2024 02:22:40 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'mesy7597_xxxxxxxx'@'localhost' (using password: YES) in /home/mesy7597/public_html/goldenphoenix/db_config.php on line 8
+[17-Sep-2024 02:54:01 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'mesy7597_xxxxxxxx'@'localhost' (using password: YES) in /home/mesy7597/public_html/goldenphoenix/db_config.php on line 8
+[17-Sep-2024 06:45:46 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'mesy7597_xxxxxxxx'@'localhost' (using password: YES) in /home/mesy7597/public_html/goldenphoenix/db_config.php on line 8
+[19-Sep-2024 06:53:36 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'mesy7597_xxxxxxxx'@'localhost' (using password: YES) in /home/mesy7597/public_html/goldenphoenix/db_config.php on line 8
