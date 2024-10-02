@@ -477,7 +477,7 @@ composer.lock
 .env
 
 ##### Log
-./callback/error_log
+./callback/error_log.py
 
 ##### Node
 node_modules
