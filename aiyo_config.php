@@ -1,5 +1,5 @@
 <?php
-$env = parse_ini_file('.env');
+$env = parse_ini_file(".env");
 
 $host = $env["AIYO_HOST"];
 $username = $env["AIYO_USERNAME"];
