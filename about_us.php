@@ -18,6 +18,8 @@
         <ul class="flex space-x-4">
             <li><a href="./index.php" class="hover:text-gray-200">Pembelian Tiket</a></li>
             <li><a href="#about" class="hover:text-gray-200">Tentang Kami</a></li>
+            <li><a href="./pendaftaran.php" class="hover:text-gray-200">Pendaftaran Anggota Baru</a></li>
+            <li><a href="./pembayaran.php" class="hover:text-gray-200">Pembayaran</a></li>
         </ul>
     </nav>
 
@@ -26,7 +28,7 @@
         <div class="flex flex-col md:flex-row">
             <div class="md:w-1/2 pr-4">
                 <p class="mb-4">
-                    Sekolah Nusaputera Semarang adalah lembaga pendidikan yang telah berdiri sejak tahun [tahun pendirian], berkomitmen untuk memberikan pendidikan berkualitas dengan fokus pada pengembangan karakter, keterampilan, dan pengetahuan siswa. Terletak di jantung kota Semarang, Nusaputera menyediakan lingkungan belajar yang kondusif dan modern, serta memadukan teknologi dengan metode pengajaran tradisional untuk memastikan bahwa setiap siswa siap menghadapi tantangan di era globalisasi.
+                    Sekolah Nusaputera Semarang adalah lembaga pendidikan yang telah berdiri sejak tahun 2006, berkomitmen untuk memberikan pendidikan berkualitas dengan fokus pada pengembangan karakter, keterampilan, dan pengetahuan siswa. Terletak di jantung kota Semarang, Nusaputera menyediakan lingkungan belajar yang kondusif dan modern, serta memadukan teknologi dengan metode pengajaran tradisional untuk memastikan bahwa setiap siswa siap menghadapi tantangan di era globalisasi.
                 </p>
                 <p class="mb-4">
                     Di Nusaputera, kami percaya bahwa setiap siswa memiliki potensi unik yang perlu dikembangkan. Oleh karena itu, kami menawarkan beragam program pendidikan dari tingkat TK, SD, SMP, hingga SMA, yang dirancang untuk menyeimbangkan aspek akademik, kreativitas, dan nilai-nilai moral.
