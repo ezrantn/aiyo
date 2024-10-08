@@ -6,11 +6,11 @@ $env = parse_ini_file("../.env");
 date_default_timezone_set('Asia/Jakarta');
 
 $targetPhone = $_SESSION['userPhone'];
-$message = 'Hello ' . $_SESSION['userName'] . ",\n\n";
-$message .= "We have successfully received your payment of " . $_SESSION['payAmount'] . ".\n";
-$message .= "Transaction Reference: " . $_SESSION['referenceId'] . "\n";
-$message .= "Payment Date: " . date('Y-m-d H:i:s') . " WIB\n";
-$message .= "Thank you for your purchase! If you have any questions, feel free to contact us.\n\n";
+$message = 'Halo ' . $_SESSION['userName'] . ",\n\n";
+$message .= "Sukses melakukan pembayaran sebesar: " . "Rp. " . $_SESSION['payAmount'] . ".\n\n";
+$message .= "Reference ID Anda: " . $_SESSION['referenceId'] . "\n";
+$message .= "Tanggal Pembayaran: " . date('Y-m-d H:i:s') . " WIB\n\n";
+$message .= "Terimakasih telah melakukan pembayaran!\n\n";
 $message .= "Best regards,\nGolden Phoenix";
 
 curl_setopt_array($curl, array(
