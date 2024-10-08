@@ -22,6 +22,10 @@ $status = $cekInvoice->responseData->invoiceStatus;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Status Pembayaran</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/goldenphoenix/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/goldenphoenix/favicon-16x16.png">
+  <link rel="manifest" href="/goldenphoenix/manifest.json">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -64,6 +68,7 @@ $status = $cekInvoice->responseData->invoiceStatus;
           <h1 class="text-3xl font-bold ml-4">Pembayaran Berhasil</h1>
         </div>
         <p class="text-lg"><i class="fas fa-smile"></i> Terima kasih, pembayaran Anda telah berhasil.</p>
+        <p class="mb-3 text-lg">Silahkan cek email Anda untuk mendapat invoice!</p>
       </div>
     <?php endif; ?>
   </div>

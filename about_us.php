@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golden Phoenix Basketball</title>
+    <title>Tentang Kami</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/goldenphoenix/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/goldenphoenix/favicon-16x16.png">
+    <link rel="manifest" href="/goldenphoenix/manifest.json">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">

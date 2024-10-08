@@ -1,47 +1,31 @@
 <?php
-header('Content-Type: application/json');
+header('Content-Type: text/plain'); // Use plain text format
 include "db_config.php";
 
-use Hidehalo\Nanoid\Client;
-use Hidehalo\Nanoid\GeneratorInterface;
+$memberName = $_POST['memberName'] ?? '';
+$memberEmail = $_POST['memberEmail'] ?? '';
+$memberPhone = str_replace("-", "", $_POST['memberPhone'] ?? '');
+$memberSekolah = $_POST['memberSekolah'] ?? '';
+$memberAlasan = $_POST['memberAlasan'] ?? '';
 
-$generateNano = new Client();
-$clientUserID = $generateNano->generateId($size = 6, $mode = Client::MODE_DYNAMIC);
+$user_id = uniqid('');
 
-$data = json_decode(file_get_contents('php://input'), true);
-
-if ($data === null) {
-    echo json_encode(['status' => 'error', 'message' => 'Invalid JSON']);
-    exit;
-}
-
-$memberName = $data['memberName'] ?? '';
-$memberEmail = $data['memberEmail'] ?? '';
-$memberPhone = str_replace("-", "", $data['memberPhone'] ?? '');
-$memberSekolah = $data['memberSekolah'] ?? '';
-$memberAlasan = $data['memberAlasan'] ?? '';
-
-var_dump($_POST);
-
-$sql = "INSERT INTO pendaftaran 
-        (user_id, nama, email, nomor_telepon, asal_sekolah, alasan, created_at) 
-        VALUES 
-        (?, ?, ?, ?, ?, ?, current_timestamp())";
+$sql = "INSERT INTO pendaftaran (user_id, nama, email, nomor_telepon, asal_sekolah, alasan, created_at) 
+        VALUES (?, ?, ?, ?, ?, ?, current_timestamp())";
 
 $stmt = $conn->prepare($sql);
 
 if ($stmt) {
-    $stmt->bind_param("ssssss", $clientUserID, $memberName, $memberEmail, $memberPhone, $memberSekolah, $memberAlasan);
-    
+    $stmt->bind_param("ssssss", $user_id, $memberName, $memberEmail, $memberPhone, $memberSekolah, $memberAlasan);
+
     if ($stmt->execute()) {
-        echo json_encode(['status' => 'success', 'message' => 'Sukses memasukan data']);
+        echo "Sukses memasukan data|$user_id";
     } else {
-        echo json_encode(['status' => 'error', 'message' => 'Error: ' . $stmt->error]); // Show error message
+        echo 'Error: ' . $stmt->error;
     }
 
-    // Close the statement
     $stmt->close();
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Error preparing statement: ' . $conn->error]);
+    echo 'Error preparing statement: ' . $conn->error;
 }
 ?>

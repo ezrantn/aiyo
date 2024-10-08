@@ -1,45 +1,68 @@
 <?php
-$env = parse_ini_file("../.env");
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 
-require 'vendor/autoload.php';
+require '../PHPMailer/PHPMailer-master/src/Exception.php';
+require '../PHPMailer/PHPMailer-master/src/PHPMailer.php';
+require '../PHPMailer/PHPMailer-master/src/SMTP.php';
 
-session_start();
+include "../db_config.php";
 
 $mail = new PHPMailer(true);
 
-try {
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
-    $mail->isSMTP();                                            
-    $mail->Host       = $env["MAIL_HOST"];                   
-    $mail->SMTPAuth   = true;                                   
-    $mail->Username   = $env["MAIL_USERNAME"];                     
-    $mail->Password   = $env["MAIL_PASSWORD"];                              
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            
-    $mail->Port       = 465;                                   
+$env = parse_ini_file("../.env");
 
-    $mail->setFrom($env["MAIL_USERNAME"], 'Golden Phoenix Basketball');
-    $mail->addAddress($_SESSION["userEmail"], $_SESSION["userName"]);     
+session_start();
 
-    $mail->isHTML(true);                                  
-    $mail->Subject = 'Payment Confirmation for Invoice ' . $_SESSION['referenceId'];
+echo $_SESSION['referenceId'];
+$referenceId = $_SESSION['referenceId'];
 
-    $mail->Body    = '
-    <h1>Payment Confirmation</h1>
-    <p>Dear ' . $_SESSION['userName'] . ',</p>
-    <p>Your payment of <b>' . $_SESSION['payAmount'] . '</b> for Invoice ID <b>' . $_SESSION['referenceId'] . '</b> has been successfully processed.</p>
-    <p>Details: ' . $_SESSION['detail'] . '</p>
-    <p>Remarks: ' . $_SESSION['remarks'] . '</p>
-    <p>Thank you for your payment.</p>
-    <p>Best regards,<br>Payment System Team</p>';
+$sql = "SELECT * FROM transaksi WHERE referenceId = '" . $referenceId . "'";
+
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+    $row = mysqli_fetch_array($result);
     
-    $mail->AltBody = 'Dear ' . $_SESSION['userName'] . ', Your payment of ' . $_SESSION['payAmount'] . ' for Invoice ID ' . $_SESSION['referenceId'] . ' has been successfully processed.';
+    try {
+        $mail->isSMTP();                                            
+        $mail->Host       = 'smtp.gmail.com';                     
+        $mail->SMTPAuth   = true;                                   
+        $mail->Username   = $env["MAIL_USERNAME"];                     
+        $mail->Password   = $env["SMTP_PASSWORD"];      
+        $mail->SMTPDebug  = SMTP::DEBUG_SERVER;
+        $mail->Debugoutput = 'html';                         
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;           
+        $mail->Port       = 465;                                    
+        
+        $mail->setFrom($env["MAIL_USERNAME"], "Golden Phoenix Basketball");
+        $mail->addAddress($row['userEmail'], $row['userName']);  
+        $mail->addReplyTo($env["MAIL_USERNAME"], "Golden Phoenix Basketball");
+        $mail->addCC($env["MAIL_CC"]);
+        $mail->addBCC($env["MAIL_CC"]);
+        
+        $mail->isHTML(true);
+        $mail->Subject = 'Payment Confirmation and Event Ticket';
 
-    $mail->send();
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        ob_start();
+        include 'template.php';
+        $emailBody = ob_get_clean();
+        $mail->Body = $emailBody;
+        $mail->AltBody = 'Your payment was successful. Reference ID: ' . $referenceId;
+                
+        $mail->send();
+    } catch (Exception $e) {
+        $errorMessage = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        $myfile = fopen("email_error.txt", "a") or die("Unable to open file!");
+        fwrite($myfile, $errorMessage . "\n");
+        fclose($myfile);
+           
+    }
+
+} else {
+    echo "Error in SQL query: " . mysqli_error($conn);
 }
+
 ?>

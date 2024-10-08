@@ -40,3 +40,13 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+
+document.getElementById('category').addEventListener('change', function () {
+    var amountField = document.getElementById('amount');
+    if (this.value === 'external') {
+        amountField.value = 150000; 
+    } else {
+        amountField.value = 100000;
+    }
+});
+

@@ -40,12 +40,12 @@ session_start();
             <form id="registerForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="submit_pendaftaran.php" method="POST">
                 <div class="mb-5">
                     <label for="memberName" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
-                    <input type="text" id="memberName" name="memberName" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama anda" required />
+                    <input type="text" id="memberName" name="memberName" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama Anda" required />
                 </div>
 
                 <div class="mb-5">
                     <label for="memberEmail" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                    <input type="email" id="memberEmail" name="memberEmail" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan email anda" required />
+                    <input type="email" id="memberEmail" name="memberEmail" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan email Anda" required />
                 </div>
 
                 <label for="memberPhone" class="block mb-2 text-sm font-medium text-gray-900">Nomor Telepon</label>
@@ -101,13 +101,12 @@ session_start();
                 memberSekolah: document.getElementById('memberSekolah').value,
                 memberAlasan: document.getElementById('memberAlasan').value
             };
-
             fetch('submit_pendaftaran.php', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: JSON.stringify(formData)
+                body: new URLSearchParams(formData).toString()
             })
             .then(response => {
                 if (response.ok) {
@@ -116,10 +115,16 @@ session_start();
                 throw new Error('Network response was not ok.');
             })
             .then(data => {
+                const [message, userId] = data.split('|'); 
+
                 Swal.fire({
-                    title: 'Sukses!',
-                    text: data,
-                    icon: 'success'
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'warning',
+                    title: 'Pendaftaran berhasil!',
+                    text: `SIMPAN KODE INI JANGAN SAMPAI LUPA!: ${userId}`,
+                    showConfirmButton: true, 
+                    confirmButtonText: 'Tutup'
                 });
             })
             .catch(error => {

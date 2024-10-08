@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golden Phoenix Basketball</title>
+    <title>Pembelian Tiket</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/goldenphoenix/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/goldenphoenix/favicon-16x16.png">
@@ -39,12 +39,12 @@ session_start();
             <form id="ticketForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="respon.php" method="POST" enctype="multipart/form-data">
                 <div class="mb-5">
                     <label for="userName" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
-                    <input type="text" id="userName" name="userName" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama anda" required />
+                    <input type="text" id="userName" name="userName" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama Anda" required />
                 </div>
 
                 <div class="mb-5">
                     <label for="userEmail" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                    <input type="email" id="userEmail" name="userEmail" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan email anda" required />
+                    <input type="email" id="userEmail" name="userEmail" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan email Anda" required />
                 </div>
 
                 <label for="userPhone" class="block mb-2 text-sm font-medium text-gray-900">Nomor Telepon</label>
@@ -60,7 +60,7 @@ session_start();
 
                 <div class="mb-5">
                     <label for="remarks" class="block mb-2 text-sm font-medium text-gray-900">Catatan (Optional)</label>
-                    <input type="text" id="remarks" name="remarks" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan catatan anda" />
+                    <input type="text" id="remarks" name="remarks" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan catatan Anda" />
                 </div>
 
                 <section class="bg-gray-50 rounded-lg shadow-md p-6 mb-5">
@@ -72,8 +72,8 @@ session_start();
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 
                                        focus:ring-blue-500 focus:border-blue-500">
                             <option value="">-- Pilih Jenis Tiket --</option>
-                            <option value="Premium">Premium (Rp 15.000)</option>
                             <option value="Reguler">Reguler (Rp 10.000)</option>
+                            <option value="Premium">Premium (Rp 15.000)</option>
                         </select>
                     </div>
 
@@ -102,7 +102,7 @@ session_start();
                 </section>
 
                 <button type="button" id="submitButton" class="w-full   bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition duration-200">
-                    Submit
+                    Pesan
                 </button>
             </form>
         </section>
