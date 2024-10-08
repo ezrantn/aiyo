@@ -4,6 +4,7 @@ include "token.php";
 include "db_config.php";
 
 date_default_timezone_set('Asia/Jakarta');
+$env = parse_ini_file(".env");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $memberID = $_POST['memberID'];
@@ -26,10 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </script>";
         exit();
     }
-    
+
     $userData = $resultUser->fetch_assoc();
-    $userEmail = $userData['email'] ?? "";  
-    $userPhone = $userData['nomor_telepon'] ?? "";  
+    $userEmail = $userData['email'] ?? "";
+    $userPhone = $userData['nomor_telepon'] ?? "";
 
     $referenceId = "GP2024" . date("mdHis");
     $expireTime = date('Y-m-d\TH:i', strtotime('+3 hours'));
@@ -39,21 +40,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $bodyCreateInvoice = array(
         "invoiceName" => "Pembayaran SPP Golden Phoenix Basketball Team",
         "referenceId" => $referenceId,
-        "userName" => $memberID, 
-        "userEmail" => $userEmail,  
-        "userPhone" => $userPhone,  
-        "remarks" => "", 
+        "userName" => $memberID,
+        "userEmail" => $userEmail,
+        "userPhone" => $userPhone,
+        "remarks" => "",
         "payAmount" => $payAmount,
         "expireTime" => $expireTime,
+        "billMasterId" => $env["BILL_MASTER_ID"],
         "paymentMethod" => array(
             "type" => "VA_CLOSED",
-            "bankCode" => "022" 
+            "bankCode" => "022"
         ),
         "items" => array(
             array(
                 "itemName" => "SPP " . ucfirst($category),
                 "itemType" => "ITEM",
-                "itemCount" => 1, 
+                "itemCount" => 1,
                 "itemTotalPrice" => $payAmount
             ),
         )
@@ -88,14 +90,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $accessToken = $invoice->responseData->accessToken;
 
         $stmtTransaksi = $conn->prepare("INSERT INTO transaksi (referenceId, userName, payAmount, items, invoiceId, status, timestamp) VALUES (?, ?, ?, ?, ?, ?, current_timestamp())");
-        $status = 'NEW'; 
-        $items = 'SPP'; 
+        $status = 'NEW';
+        $items = 'SPP';
 
         $stmtTransaksi->bind_param("ssisss", $referenceId, $memberID, $payAmount, $items, $invoiceId, $status);
 
         if ($stmtTransaksi->execute()) {
             $stmtPembayaran = $conn->prepare("INSERT INTO pembayaran (user_id, amount, payment_method, invoice_id, status) VALUES (?, ?, ?, ?, 'pending')");
-            $paymentMethod = "VA_CLOSED"; 
+            $paymentMethod = "VA_CLOSED";
 
             $stmtPembayaran->bind_param("sdss", $memberID, $payAmount, $paymentMethod, $invoiceId);
 
@@ -106,12 +108,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Error inserting into pembayaran: " . $stmtPembayaran->error;
             }
 
-            $stmtPembayaran->close(); 
+            $stmtPembayaran->close();
         } else {
             echo "Error inserting into transaksi: " . $stmtTransaksi->error;
         }
 
-        $stmtTransaksi->close(); 
+        $stmtTransaksi->close();
     } else {
         echo "Error creating invoice: " . $invoice->responseMessage;
     }
@@ -121,4 +123,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Invalid request method.";
 }
-?>

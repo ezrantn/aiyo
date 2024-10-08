@@ -482,4 +482,5 @@ composer.lock
 ##### Node
 node_modules
 
+# Hide Credentials for Google Cloud API
 credentials.json

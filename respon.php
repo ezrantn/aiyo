@@ -2,6 +2,7 @@
 include "token.php";
 
 date_default_timezone_set('Asia/Jakarta');
+$env = parse_ini_file(".env");
 
 $userName = $_POST['userName'];
 $userEmail = $_POST['userEmail'];
@@ -39,6 +40,7 @@ $bodyCreateInvoice = array(
     "remarks" => $remarks,
     "payAmount" => $payAmount,
     "expireTime" => $expireTime,
+    "billMasterId" => $env["BILL_MASTER_ID"],
     "paymentMethod" => array(
         "type" => "VA_CLOSED",
         "bankCode" => "022"
