@@ -88,7 +88,7 @@ if ($invoice->responseCode == '2000000') {
     (referenceId, userName, userEmail, userPhone, remarks, payAmount, items, invoiceId, status, timestamp) 
     VALUES 
     ('" . $referenceId . "', '" . $userName . "', '" . $userEmail . "', '" . $userPhone . "', 
-    '" . $remarks . "', '" . $payAmount . "', '" . $detail . "', '" . $invoiceId . "', 'NEW', current_timestamp())";
+    '" . $remarks . "', '" . $payAmount . "', '" . $ticketType . "', '" . $invoiceId . "', 'NEW', current_timestamp())";
 
     if ($conn->query($sql) === TRUE) {
         // Data inserted successfully, proceed with displaying the next step
