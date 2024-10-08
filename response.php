@@ -18,8 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ticketType = $_POST['ticketType'];
     $quantity = (int)$_POST['quantity'];
 
-    $vipPrice = 15000; 
-    $nonVipPrice = 10000; 
+    $vipPrice = 15000;
+    $nonVipPrice = 10000;
     $payAmount = 0;
 
     if ($ticketType == 'Premium') {
@@ -82,14 +82,14 @@ if ($invoice->responseCode == '2000000') {
     $invoiceId = $invoice->responseData->invoiceId;
     $accessToken = $invoice->responseData->accessToken;
 
-    include "db_config.php";
+    include "db-config.php";
 
     $remarks = str_replace(array("'", '"', ',', ';', '<', '>', '/'), ' ', "-");
-    
-    $sql = "INSERT INTO transaksi 
-    (referenceId, userName, userEmail, userPhone, remarks, payAmount, items, invoiceId, status, timestamp) 
-    VALUES 
-    ('" . $referenceId . "', '" . $userName . "', '" . $userEmail . "', '" . $userPhone . "', 
+
+    $sql = "INSERT INTO transaksi
+    (referenceId, userName, userEmail, userPhone, remarks, payAmount, items, invoiceId, status, timestamp)
+    VALUES
+    ('" . $referenceId . "', '" . $userName . "', '" . $userEmail . "', '" . $userPhone . "',
     '" . $remarks . "', '" . $payAmount . "', '" . $ticketType . "', '" . $invoiceId . "', 'NEW', current_timestamp())";
 
     if ($conn->query($sql) === TRUE) {
@@ -103,5 +103,4 @@ if ($invoice->responseCode == '2000000') {
 
 curl_close($chCreateInvoice);
 
-header("Location: cek.php?invoiceId=$invoiceId&accessToken=$accessToken");
-?>
+header("Location: check.php?invoiceId=$invoiceId&accessToken=$accessToken");

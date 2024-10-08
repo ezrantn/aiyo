@@ -28,7 +28,7 @@ curl_setopt_array($curl, array(
         'countryCode' => '62',
     ),
     CURLOPT_HTTPHEADER => array(
-        'Authorization: ' . $env["WA_AUTH"]
+        'Authorization: ' . $env["FONNTE_TOKEN"]
     ),
 ));
 

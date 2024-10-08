@@ -8,7 +8,7 @@ require '../PHPMailer/PHPMailer-master/src/Exception.php';
 require '../PHPMailer/PHPMailer-master/src/PHPMailer.php';
 require '../PHPMailer/PHPMailer-master/src/SMTP.php';
 
-include "../db_config.php";
+include "../db-config.php";
 
 $mail = new PHPMailer(true);
 
@@ -32,8 +32,6 @@ if ($result) {
         $mail->SMTPAuth   = true;
         $mail->Username   = $env["MAIL_USERNAME"];
         $mail->Password   = $env["SMTP_PASSWORD"];
-        $mail->SMTPDebug  = SMTP::DEBUG_SERVER;
-        $mail->Debugoutput = 'html';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;
 

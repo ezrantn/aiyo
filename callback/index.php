@@ -2,7 +2,7 @@
 
 session_start();
 
-include "../db_config.php";
+include "../db-config.php";
 
 $data = file_get_contents('php://input');
 
@@ -60,7 +60,7 @@ if ($result) {
 
 
 include "../email/sendmail.php";
-
+include "./otp.php";
 
 $sql = "UPDATE transaksi SET status = 'PAID', timestamp = current_timestamp() WHERE invoiceId = '" . $invoiceId . "'";
 

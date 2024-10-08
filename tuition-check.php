@@ -1,5 +1,5 @@
 <?php
-include "aiyo_config.php";
+include "aiyo-config.php";
 
 $invoiceId = $_GET['invoiceId'];
 $accessToken = $_GET['accessToken'];

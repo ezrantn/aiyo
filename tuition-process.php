@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "token.php";
-include "db_config.php";
+include "db-config.php";
 
 date_default_timezone_set('Asia/Jakarta');
 $env = parse_ini_file(".env");
@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmtPembayaran->bind_param("sdss", $memberID, $payAmount, $paymentMethod, $invoiceId);
 
             if ($stmtPembayaran->execute()) {
-                header("Location: cek_pembayaran.php?invoiceId=$invoiceId&accessToken=$accessToken");
+                header("Location: tuition-check.php?invoiceId=$invoiceId&accessToken=$accessToken");
                 exit();
             } else {
                 echo "Error inserting into pembayaran: " . $stmtPembayaran->error;

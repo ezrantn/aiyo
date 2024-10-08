@@ -1,5 +1,5 @@
 <?php
-include "aiyo_config.php";
+include "aiyo-config.php";
 
 $pathInvoice = '/api/v1/invoice';
 $invoiceId = $_GET['invoiceId'];
@@ -54,7 +54,7 @@ $status = $cekInvoice->responseData->invoiceStatus;
         <p class="text-lg"><i class="fas fa-sticky-note"></i> Catatan: <?= !empty($cekInvoice->responseData->remarks) ? htmlspecialchars($cekInvoice->responseData->remarks) : '-'; ?></p>
         <p class="text-lg"><i class="fas fa-hourglass-half"></i> Status: Menunggu Pembayaran</p>
       </div>
-      
+
       <div class="flex justify-center mt-6">
         <a href="<?= htmlspecialchars($cekInvoice->responseData->invoiceURL); ?>" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out">
           <i class="fas fa-credit-card"></i> Lanjutkan Pembayaran

@@ -9,9 +9,9 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pembelian Tiket</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/goldenphoenix/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/goldenphoenix/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/goldenphoenix/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/goldenphoenix/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/goldenphoenix/assets/favicon-16x16.png">
     <link rel="manifest" href="/goldenphoenix/manifest.json">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -19,28 +19,28 @@ session_start();
 
 <body class="bg-gray-100 font-sans">
 
-    <header class="bg-yellow-500 text-white p-2"> 
+    <header class="bg-yellow-500 text-white p-2">
         <div class="flex items-center justify-between">
             <div class="flex items-center">
                 <img src="assets/logo.png" alt="Golden Phoenix Logo" class="w-20 h-20 mr-4">
-                <h1 class="text-3xl font-bold">Golden Phoenix Basketball</h1> 
+                <h1 class="text-3xl font-bold">Golden Phoenix Basketball</h1>
             </div>
         </div>
     </header>
 
     <nav class="bg-gray-800 text-white p-4">
         <ul class="flex space-x-4">
-            <li><a href="#ticketing" class="hover:text-gray-200">Pembelian Tiket</a></li>
-            <li><a href="./about_us.php" class="hover:text-gray-200">Tentang Kami</a></li>
-            <li><a href="./pendaftaran.php" class="hover:text-gray-200">Pendaftaran Anggota Baru</a></li>
-            <li><a href="./pembayaran.php" class="hover:text-gray-200">Pembayaran</a></li>
+            <li><a href="./index.php" class="hover:text-gray-200">Pembelian Tiket</a></li>
+            <li><a href="./about-us.php" class="hover:text-gray-200">Tentang Kami</a></li>
+            <li><a href="./register-member.php" class="hover:text-gray-200">Pendaftaran Anggota Baru</a></li>
+            <li><a href="./paid-tuition.php" class="hover:text-gray-200">Pembayaran</a></li>
         </ul>
     </nav>
 
     <main class="container mx-auto mt-8 p-4">
         <section id="ticketing" class="mb-12">
             <h2 class="text-3xl font-semibold mb-4">E-Ticketing</h2>
-            <form id="ticketForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="respon.php" method="POST" enctype="multipart/form-data">
+            <form id="ticketForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="response.php" method="POST" enctype="multipart/form-data">
                 <div class="mb-5">
                     <label for="userName" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
                     <input type="text" id="userName" name="userName" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama Anda" required />
@@ -73,7 +73,7 @@ session_start();
                     <div class="mb-4">
                         <label for="ticket-type" class="block mb-2 text-sm font-medium text-gray-900">Jenis Tiket:</label>
                         <select id="ticket-type" name="ticketType"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5
                                        focus:ring-blue-500 focus:border-blue-500">
                             <option value="">-- Pilih Jenis Tiket --</option>
                             <option value="Reguler">Reguler (Rp 10.000)</option>
@@ -83,14 +83,14 @@ session_start();
 
                     <aside class="bg-yellow-100 text-yellow-800 p-4 rounded-lg mb-4">
                         <h4 class="font-semibold mb-2">Perbedaan Tiket Premium dan Reguler:</h4>
-                        <p class="mb-2"><strong>Premium:</strong> Tiket Premium memberikan Anda tempat duduk di paling depan tribun, sehingga Anda bisa lebih dekat dengan lapangan.</p>
                         <p><strong>Reguler:</strong> Tiket Reguler memberikan tempat duduk di barisan belakang tribun, namun tetap memberikan pengalaman menonton yang nyaman.</p>
+                        <p class="mb-2"><strong>Premium:</strong> Tiket Premium memberikan Anda tempat duduk di paling depan tribun, sehingga Anda bisa lebih dekat dengan lapangan.</p>
                     </aside>
 
                     <div class="mb-4">
                         <label for="match" class="block mb-2 text-sm font-medium text-gray-900">Pilih Pertandingan:</label>
                         <select id="match" name="match"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5
                                        focus:ring-blue-500 focus:border-blue-500">
                             <option value="">-- Pilih Pertandingan --</option>
                             <option value="loyola">Golden Phoenix vs SMA Loyola, 5 Oktober 2024</option>

@@ -9,9 +9,9 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pendaftaran Anggota Baru</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/goldenphoenix/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/goldenphoenix/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/goldenphoenix/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/goldenphoenix/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/goldenphoenix/assets/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="manifest" href="/goldenphoenix/manifest.json">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -42,16 +42,16 @@ session_start();
     <nav class="bg-gray-800 text-white p-4">
         <ul class="flex space-x-4">
             <li><a href="./index.php" class="hover:text-gray-200">Pembelian Tiket</a></li>
-            <li><a href="./about_us.php" class="hover:text-gray-200">Tentang Kami</a></li>
-            <li><a href="#pendaftaran" class="hover:text-gray-200">Pendaftaran Anggota Baru</a></li>
-            <li><a href="./pembayaran.php" class="hover:text-gray-200">Pembayaran</a></li>
+            <li><a href="./about-us.php" class="hover:text-gray-200">Tentang Kami</a></li>
+            <li><a href="./register-member.php" class="hover:text-gray-200">Pendaftaran Anggota Baru</a></li>
+            <li><a href="./paid-tuition.php" class="hover:text-gray-200">Pembayaran</a></li>
         </ul>
     </nav>
 
     <main class="container mx-auto mt-8 p-4">
         <section id="pendaftaran" class="mb-12">
             <h2 class="text-3xl font-semibold mb-4">Pendaftaran Anggota Baru</h2>
-            <form id="registerForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="submit_pendaftaran.php" method="POST">
+            <form id="registerForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="./register-process.php" method="POST">
                 <div class="mb-5">
                     <label for="Nama Siswa" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
                     <input type="text" id="memberName" name="Nama Siswa" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama Anda" required />
@@ -79,6 +79,18 @@ session_start();
                 </div>
 
                 <div class="mb-5">
+                    <label class="block mb-2 text-sm font-medium text-gray-900">Lokasi Sekolah</label>
+                    <div class="flex items-center mb-2">
+                        <input id="default-radio-1" type="radio" name="default-radio" value="option1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                        <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900">Dalam Nusaputera</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="default-radio-2" type="radio" name="default-radio" value="option2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                        <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900">Luar Nusaputera</label>
+                    </div>
+                </div>
+
+                <div class="mb-5">
                     <label for="Alasan Mendaftar" class="block mb-2 text-sm font-medium text-gray-900">Alasan Mendaftar</label>
                     <textarea id="memberAlasan" name="Alasan Mendaftar" rows="4" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Tuliskan alasan mendaftar" required></textarea>
                 </div>
@@ -93,7 +105,7 @@ session_start();
     </footer>
 
     <div id="overlay"></div>
-    <script src="./scripts/pendaftaran-script.js"></script>
+    <script src="./scripts/register-script.js"></script>
 </body>
 
 </html>

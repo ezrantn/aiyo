@@ -1,0 +1,69 @@
+<mjml>
+  <mj-head>
+    <mj-title>Payment Invoice and Ticket</mj-title>
+    <mj-attributes>
+      <mj-all font-family="sans-serif"></mj-all>
+    </mj-attributes>
+  </mj-head>
+
+  <mj-body background-color="#f7fafc">
+    <!-- Payment Invoice Section -->
+    <mj-section background-color="#ffffff" padding="20px" border-radius="8px">
+      <mj-column>
+        <mj-text font-size="24px" font-weight="bold" color="#4a5568" padding-bottom="16px">Payment Invoice</mj-text>
+        <mj-divider border-color="#cbd5e0" border-width="2px" padding-bottom="16px" />
+
+        <mj-table>
+          <tr>
+            <td><strong>Customer:</strong></td>
+            <td><?php echo htmlspecialchars($row['userName']); ?></td>
+          </tr>
+          <tr>
+            <td><strong>Email:</strong></td>
+            <td><?php echo htmlspecialchars($row['userEmail']); ?></td>
+          </tr>
+          <tr>
+            <td><strong>Phone Number:</strong></td>
+            <td><?php echo htmlspecialchars($row['userPhone']); ?></td>
+          </tr>
+          <tr>
+            <td><strong>Date:</strong></td>
+            <td><?php echo date('Y-m-d'); ?></td>
+          </tr>
+          <tr>
+            <td><strong>Invoice #:</strong></td>
+            <td>INV-<?php echo htmlspecialchars($referenceId); ?></td>
+          </tr>
+        </mj-table>
+
+        <mj-text color="#718096" padding-top="16px">Thank you for your payment. Your transaction was successful.</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Ticket Section -->
+    <mj-section background-color="#c3dafe" padding="20px" border-radius="8px">
+      <mj-column>
+        <mj-text font-size="20px" font-weight="bold" color="#2d3748">Golden Phoenix Basketball Event Ticket</mj-text>
+
+        <mj-table>
+          <tr>
+            <td><strong>Event:</strong></td>
+            <td>Basketball Tournament</td>
+          </tr>
+          <tr>
+            <td><strong>Date:</strong></td>
+            <td><?php echo date('F d, Y'); ?></td>
+          </tr>
+          <tr>
+            <td><strong>Venue:</strong></td>
+            <td>Phoenix Arena</td>
+          </tr>
+        </mj-table>
+
+        <mj-text color="#ffffff" font-weight="bold" align="center" font-size="18px">
+            Reference ID: <?php echo htmlspecialchars($referenceId); ?>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

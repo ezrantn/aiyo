@@ -1,5 +1,5 @@
 <?php
-include "aiyo_config.php";
+include "aiyo-config.php";
 $pathToken = '/api/oauth/token';
 $urlGetToken = $host . $pathToken;
 $chGetToken = curl_init($urlGetToken);
@@ -17,4 +17,4 @@ $result = curl_exec($chGetToken);
 $nilai = json_decode($result);
 $accessToken = $nilai->responseData->accessToken;
 curl_close($chGetToken);
-?>
+

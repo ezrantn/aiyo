@@ -1,6 +1,6 @@
 <?php
-header('Content-Type: text/plain'); 
-include "db_config.php";
+header('Content-Type: text/plain');
+include "db-config.php";
 
 $memberName = $_POST['Nama Siswa'] ?? '';
 $memberEmail = $_POST['Email'] ?? '';
@@ -12,7 +12,7 @@ $memberPhone = str_replace("-", "", $userPhone);
 
 $user_id = uniqid();
 
-$sql = "INSERT INTO pendaftaran (user_id, nama, email, nomor_telepon, asal_sekolah, alasan, created_at) 
+$sql = "INSERT INTO pendaftaran (user_id, nama, email, nomor_telepon, asal_sekolah, alasan, created_at)
         VALUES (?, ?, ?, ?, ?, ?, current_timestamp())";
 
 $stmt = $conn->prepare($sql);
@@ -30,4 +30,3 @@ if ($stmt) {
 } else {
     echo 'Error preparing statement: ' . $conn->error;
 }
-?>
