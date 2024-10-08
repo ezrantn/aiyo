@@ -24,7 +24,7 @@ $amount = $data_decode['amount'];
 
 $status = $data_decode['status'];
 
-$sql = "SELECT * FROM transaksi WHERE invoiceId = '".$invoiceId."'";
+$sql = "SELECT * FROM transaksi WHERE invoiceId = '" . $invoiceId . "'";
 
 $result = $conn->query($sql);
 
@@ -32,20 +32,19 @@ if ($result) {
 
     $row = $result->fetch_assoc();
 
-    $_SESSION['referenceId']=$row['referenceId'];
+    $_SESSION['referenceId'] = $row['referenceId'];
 
-    $_SESSION['userName']=$row['userName'];
+    $_SESSION['userName'] = $row['userName'];
 
-    $_SESSION['userEmail']=$row['userEmail'];
+    $_SESSION['userEmail'] = $row['userEmail'];
 
-    $_SESSION['userPhone']=$row['userPhone'];
+    $_SESSION['userPhone'] = $row['userPhone'];
 
-    $_SESSION['remarks']=$row['remarks'];
+    $_SESSION['remarks'] = $row['remarks'];
 
-    $_SESSION['payAmount']=$row['payAmount'];
+    $_SESSION['payAmount'] = $row['payAmount'];
 
-    $_SESSION['detail']=$row['items'];
-
+    $_SESSION['detail'] = $row['items'];
 } else {
 
     $teks = "Error updating status: " . $conn->error;
@@ -54,8 +53,7 @@ if ($result) {
 
     fwrite($myfile, $teks . "\n");
 
-    fclose($myfile);    
-
+    fclose($myfile);
 }
 
 //require("../email/callback.php");
@@ -64,13 +62,12 @@ if ($result) {
 include "../email/sendmail.php";
 
 
-$sql = "UPDATE transaksi SET status = 'PAID', timestamp = current_timestamp() WHERE invoiceId = '".$invoiceId."'";
+$sql = "UPDATE transaksi SET status = 'PAID', timestamp = current_timestamp() WHERE invoiceId = '" . $invoiceId . "'";
 
 
 if ($conn->query($sql) === TRUE) {
 
-    //echo "Status updated successfully";
-
+    include "./phone.php";
 } else {
 
     $teks = "Error updating status: " . $conn->error;
@@ -79,8 +76,7 @@ if ($conn->query($sql) === TRUE) {
 
     fwrite($myfile, $teks . "\n");
 
-    fclose($myfile);    
-
+    fclose($myfile);
 }
 
 $conn->close();
@@ -90,5 +86,3 @@ $myfile = fopen("payment.txt", "a") or die("Unable to open file!");
 fwrite($myfile, $data . "\n");
 
 fclose($myfile);
-
-?>
