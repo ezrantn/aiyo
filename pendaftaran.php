@@ -118,14 +118,19 @@ session_start();
                 const [message, userId] = data.split('|'); 
 
                 Swal.fire({
-                    toast: true,
-                    position: 'top-end',
-                    icon: 'warning',
-                    title: 'Pendaftaran berhasil!',
-                    text: `SIMPAN KODE INI JANGAN SAMPAI LUPA!: ${userId}`,
-                    showConfirmButton: true, 
-                    confirmButtonText: 'Tutup'
-                });
+                toast: true,
+                position: 'top-end',
+                icon: 'warning',
+                title: 'PENDAFTARAN BERHASIL!',
+                text: `PASTIKAN ANDA MENYIMPAN KODE INI! JANGAN SAMPAI HILANG!: ${userId}`,
+                background: '#f8d7da',
+                titleText: 'PENDAFTARAN BERHASIL!',
+                html: `<strong style="font-size: 18px; color: #d32f2f;">SIMPAN KODE INI JANGAN SAMPAI LUPA!: <br>${userId}</strong>`,
+                showConfirmButton: true,
+                confirmButtonText: 'SAYA MENGERTI!',
+                confirmButtonColor: '#721c24',
+                timer: 10000
+            });
             })
             .catch(error => {
                 Swal.fire({
