@@ -4,6 +4,7 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,12 +16,15 @@ session_start();
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
 <body class="bg-gray-100 font-sans">
 
-    <header class="bg-yellow-500 text-white p-4">
-        <div class="flex items-center">
-            <img src="assets/logo.png" alt="Golden Phoenix Logo" class="h-16 w-16 mr-4">
-            <h1 class="text-4xl font-bold">Golden Phoenix Basketball</h1>
+    <header class="bg-yellow-500 text-white p-2"> 
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="assets/logo.png" alt="Golden Phoenix Logo" class="w-20 h-20 mr-4">
+                <h1 class="text-3xl font-bold">Golden Phoenix Basketball</h1> 
+            </div>
         </div>
     </header>
 
@@ -51,8 +55,8 @@ session_start();
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 top-0 flex items-center pl-3.5 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 19 18">
-                            <path d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z"/>
-                            </svg>
+                            <path d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z" />
+                        </svg>
                     </div>
                     <input type="text" id="userPhone" name="userPhone" maxlength="15" aria-describedby="helper-text-explanation" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pl-10" placeholder="123-456-789-012" oninput="formatPhoneNumber(this)" required />
                 </div>
@@ -68,8 +72,8 @@ session_start();
 
                     <div class="mb-4">
                         <label for="ticket-type" class="block mb-2 text-sm font-medium text-gray-900">Jenis Tiket:</label>
-                        <select id="ticket-type" name="ticketType" 
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 
+                        <select id="ticket-type" name="ticketType"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 
                                        focus:ring-blue-500 focus:border-blue-500">
                             <option value="">-- Pilih Jenis Tiket --</option>
                             <option value="Reguler">Reguler (Rp 10.000)</option>
@@ -85,8 +89,8 @@ session_start();
 
                     <div class="mb-4">
                         <label for="match" class="block mb-2 text-sm font-medium text-gray-900">Pilih Pertandingan:</label>
-                        <select id="match" name="match" 
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 
+                        <select id="match" name="match"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 
                                        focus:ring-blue-500 focus:border-blue-500">
                             <option value="">-- Pilih Pertandingan --</option>
                             <option value="loyola">Golden Phoenix vs SMA Loyola, 5 Oktober 2024</option>
@@ -96,8 +100,8 @@ session_start();
 
                     <div class="mb-4">
                         <label for="quantity" class="block mb-2 text-sm font-medium text-gray-900">Pesan Berapa Tiket:</label>
-                        <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" 
-                               class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+                        <input type="number" id="quantity" name="quantity" min="1" max="10" value="1"
+                            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
                     </div>
                 </section>
 
@@ -114,4 +118,5 @@ session_start();
 
     <script src="./scripts/script.js"></script>
 </body>
+
 </html>
