@@ -64,7 +64,6 @@ include "./otp.php";
 
 $sql = "UPDATE transaksi SET status = 'PAID', timestamp = current_timestamp() WHERE invoiceId = '" . $invoiceId . "'";
 
-
 if ($conn->query($sql) === TRUE) {
 
     include "./phone.php";

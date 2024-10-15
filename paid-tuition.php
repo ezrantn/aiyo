@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,11 +38,10 @@ session_start();
                     <input type="text" id="memberID" name="memberID" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan ID anggota" required />
                 </div>
 
-                <div class="mb-5">
-                    <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Lokasi Sekolah</label>
-                    <select id="category" name="category" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
-                        <option value="internal">Dalam Sekolah (100k)</option>
-                        <option value="external">Luar Sekolah (150k)</option>
+                <div class="mb-5" id="fee-select-container" style="display: none;">
+                    <label for="fee_category" class="block mb-2 text-sm font-medium text-gray-900">Fee Kategori</label>
+                    <select id="fee_category" name="fee_category" class="bg-gray-100 border border-gray-300 text-black text-sm rounded-lg block w-full p-2.5" readonly>
+
                     </select>
                 </div>
 
@@ -83,4 +78,31 @@ session_start();
             }
         });
     });
+
+function updateSelectOptions(lokasi) {
+    var selectElement = document.getElementById('fee_category');
+    var selectContainer = document.getElementById('fee-select-container');
+
+    // Show the select element
+    selectContainer.style.display = 'block';
+
+    // Clear existing options
+    selectElement.innerHTML = '';
+
+    // Add new options based on the selected location
+    if (lokasi === 'dalam') {
+        var option = document.createElement('option');
+        option.value = 'internal';
+        option.text = 'Dalam Sekolah (100k)';
+        selectElement.appendChild(option);
+    } else if (lokasi === 'luar') {
+        var option = document.createElement('option');
+        option.value = 'external';
+        option.text = 'Luar Sekolah (150k)';
+        selectElement.appendChild(option);
+    }
+
+    // Set the select element to be readonly (uneditable)
+    selectElement.setAttribute('disabled', true);
+}
 </script>

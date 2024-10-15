@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,11 +77,11 @@ session_start();
                 <div class="mb-5">
                     <label class="block mb-2 text-sm font-medium text-gray-900">Lokasi Sekolah</label>
                     <div class="flex items-center mb-2">
-                        <input id="default-radio-1" type="radio" name="default-radio" value="option1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                        <input id="default-radio-1" type="radio" name="lokasi_sekolah" value="dalam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
                         <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900">Dalam Nusaputera</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="default-radio-2" type="radio" name="default-radio" value="option2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                        <input id="default-radio-2" type="radio" name="lokasi_sekolah" value="luar" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
                         <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900">Luar Nusaputera</label>
                     </div>
                 </div>

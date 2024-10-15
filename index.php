@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['popup_seen'])) {
+    $_SESSION['popup_seen'] = true; // Set the session variable to indicate the popup has been seen
+    $showPopup = true; // Flag to show the popup
+} else {
+    $showPopup = false; // Don't show the popup
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +22,46 @@ session_start();
     <link rel="manifest" href="/goldenphoenix/manifest.json">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        #popup {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* Ensure it appears above other content */
+            width: 90%; /* Set the width to be responsive */
+            max-width: 400px; /* Maximum width */
+            border-radius: 8px; /* Rounded corners */
+            overflow: hidden; /* Prevent overflow */
+        }
+
+        #overlay {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999; /* Ensure it appears above other content */
+        }
+
+        /* Close button style */
+        #closePopup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #FF0000; /* Red color for visibility */
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100 font-sans">
@@ -105,7 +152,7 @@ session_start();
                     </div>
                 </section>
 
-                <button type="button" id="submitButton" class="w-full   bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition duration-200">
+                <button type="button" id="submitButton" class="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition duration-200">
                     Pesan
                 </button>
             </form>
@@ -115,6 +162,24 @@ session_start();
     <footer class="bg-gray-800 text-white p-4 mt-8">
         <p>&copy; 2024 Golden Phoenix Basketball. All rights reserved.</p>
     </footer>
+
+    <!-- Overlay and Popup for First Visit -->
+    <?php if ($showPopup): ?>
+    <div id="overlay"></div>
+    <div id="popup">
+        <img src="/goldenphoenix/assets/poster-gp.jpg" alt="Poster Golden Phoenix">
+        <button id="closePopup" class="bg-red-500 text-white py-2 px-4 rounded">X</button>
+    </div>
+    <script>
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('popup').style.display = 'block';
+
+        document.getElementById('closePopup').onclick = function() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        };
+    </script>
+    <?php endif; ?>
 
     <script src="./scripts/script.js"></script>
 </body>

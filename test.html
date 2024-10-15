@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nusaputera Check Example</title>
+</head>
+<body>
+    <h1>Nusaputera Check Example</h1>
+
+    <label for="schoolName">Enter School Name:</label>
+    <input type="text" id="schoolName" onkeyup="checkNusaputera()">
+
+    <br><br>
+
+    <input type="radio" id="option1" name="schoolType" value="nusaputera">
+    <label for="option1">Nusaputera School</label><br>
+
+    <input type="radio" id="option2" name="schoolType" value="other">
+    <label for="option2">Other School</label>
+
+    <script>
+    function checkNusaputera() {
+        const textBox = document.getElementById('schoolName');
+        const radioButton1 = document.getElementById('option1'); // Nusaputera School
+        const radioButton2 = document.getElementById('option2'); // Other School
+        let text = textBox.value;
+
+        // Regular expression to match variations of "Nusaputera"
+        const regex = /\b(nusaputera|nusaputra|nusa putera|nusa putra|nusa_putera)\b/gi;
+
+        // Check if the input contains a valid variation of "Nusaputera"
+        if (regex.test(text)) {
+            // Correct to "Nusaputera" and select the first radio button
+            textBox.value = text.replace(regex, 'Nusaputera');
+            radioButton1.checked = true;
+        } else {
+            // Select the second radio button for other input
+            radioButton2.checked = true;
+        }
+    }
+    </script>
+</body>
+</html>

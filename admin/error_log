@@ -1,0 +1,4 @@
+[15-Oct-2024 02:58:05 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/mesy7597/public_html/goldenphoenix/admin/manage-matches.php:31
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/admin/manage-matches.php on line 31

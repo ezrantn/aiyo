@@ -476,11 +476,5 @@ composer.lock
 ##### Environment
 .env
 
-##### Log
-./callback/error_log.py
-
 ##### Node
 node_modules
-
-# Hide Credentials for Google Cloud API
-credentials.json

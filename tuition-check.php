@@ -16,6 +16,12 @@ curl_close($chCekInvoice);
 
 $cekInvoice = json_decode($responseCekInvoice);
 $status = $cekInvoice->responseData->invoiceStatus;
+if ($status == "PAID") {
+    $stmtUpdateStatus = $conn->prepare("UPDATE pembayaran SET status = 'PAID' WHERE invoice_id = ?");
+    $stmtUpdateStatus->bind_param("s", $invoiceId);
+    $stmtUpdateStatus->execute();
+    $stmtUpdateStatus->close();
+}
 ?>
 
 <!DOCTYPE html>
