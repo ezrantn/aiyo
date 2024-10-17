@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pembayaran SPP</title>
+    <title>Gallery</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/goldenphoenix/assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/goldenphoenix/assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/goldenphoenix/assets/favicon-16x16.png">
     <link rel="manifest" href="/goldenphoenix/manifest.json">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
+        body {
+            background-color: #F4F6FF;
+        }
+
+        .gallery-img {
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05); /* Zoom in on hover */
+        }
+
         @media (max-width: 768px) {
         #navbar-default {
             transition: max-height 0.3s ease-out;
@@ -23,9 +34,10 @@
     }
     </style>
 </head>
-<body class="font-sans flex flex-col min-h-screen" style="background-color: #F4F6FF;">
+<body class="font-sans flex flex-col min-h-screen">
 
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
+    <!-- Navbar -->
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <div class="flex items-center space-x-3">
                 <img src="assets/logo.png" class="h-8" alt="Golden Phoenix Logo" />
@@ -65,24 +77,41 @@
         </div>
     </nav>
 
-    <main class="container mx-auto mt-8 p-4 flex-grow">
-        <section id="pembayaran" class="mb-12">
-            <h2 class="text-4xl font-bold mb-4">Pembayaran SPP</h2>
-            <form id="paymentForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="./tuition-process.php" method="POST">
-                <div class="mb-5">
-                    <label for="memberID" class="block mb-2 text-sm font-medium text-gray-900">ID Anggota</label>
-                    <input type="text" id="memberID" name="memberID" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan ID anggota" required />
+    <!-- Gallery Section -->
+    <main class="container mx-auto mt-8 p-4">
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-12">
+            <h1 class="text-4xl font-bold mb-4">Gallery</h1>
+            <p class="text-xl mb-6 text-gray-600">Jelajahi momen-momen dari pertandingan, acara, dan sesi latihan kami!</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid gap-4">
+                    <div>
+                        <img class="gallery-img h-auto max-w-full rounded-lg" src="./assets/galleries/shots.jpeg" alt="">
+                    </div>
+                    <div>
+                        <img class="gallery-img h-auto max-w-full rounded-lg" src="./assets/galleries/dribble.jpeg" alt="">
+                    </div>
+                    <div>
+                        <img class="gallery-img h-auto max-w-full rounded-lg" src="./assets/galleries/women_dribble.jpeg" alt="">
+                    </div>
                 </div>
 
-                <button type="submit" id="paymentButton" class="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition duration-200">Bayar</button>
-
-                <div class="mt-4 text-center">
-                    <a href="./forgot-id.php" class="text-sm text-blue-500 hover:underline">Forgot ID?</a>
+                <div class="grid gap-4">
+                    <div>
+                        <img class="gallery-img h-auto max-w-full rounded-lg" src="./assets/galleries/coach.jpeg" alt="">
+                    </div>
+                    <div>
+                        <img class="gallery-img h-auto max-w-full rounded-lg" src="./assets/galleries/dribble_together.jpeg" alt="">
+                    </div>
+                    <div>
+                        <img class="gallery-img h-auto max-w-full rounded-lg" src="./assets/galleries/cool_boy.jpeg" alt="">
+                    </div>
                 </div>
-            </form>
+            </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-gray-800 text-white p-4 mt-auto">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
             <p>&copy; 2024 Golden Phoenix Basketball. All rights reserved.</p>
@@ -93,61 +122,16 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('[data-collapse-toggle="navbar-default"]');
+            const navMenu = document.getElementById('navbar-default');
+
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('hidden');
+                navMenu.classList.toggle('block');
+            });
+        });
+    </script>
 </body>
 </html>
-<script>
-    document.getElementById('paymentButton').addEventListener('click', function(event) {
-        event.preventDefault();
-        Swal.fire({
-            title: 'Apakah Anda yakin?',
-            text: 'Pastikan anggota ID Anda benar!',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, saya yakin!',
-            cancelButtonText: 'Batal'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('paymentForm').submit();
-            }
-        });
-    });
-
-    function updateSelectOptions(lokasi) {
-        var selectElement = document.getElementById('fee_category');
-        var selectContainer = document.getElementById('fee-select-container');
-
-        // Show the select element
-        selectContainer.style.display = 'block';
-
-        // Clear existing options
-        selectElement.innerHTML = '';
-
-        // Add new options based on the selected location
-        if (lokasi === 'dalam') {
-            var option = document.createElement('option');
-            option.value = 'internal';
-            option.text = 'Dalam Sekolah (100k)';
-            selectElement.appendChild(option);
-        } else if (lokasi === 'luar') {
-            var option = document.createElement('option');
-            option.value = 'external';
-            option.text = 'Luar Sekolah (150k)';
-            selectElement.appendChild(option);
-        }
-
-        // Set the select element to be readonly (uneditable)
-        selectElement.setAttribute('disabled', true);
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('[data-collapse-toggle="navbar-default"]');
-    const navMenu = document.getElementById('navbar-default');
-
-    hamburger.addEventListener('click', function() {
-        navMenu.classList.toggle('hidden');
-        navMenu.classList.toggle('block');
-    });
-});
-</script>

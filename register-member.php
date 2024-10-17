@@ -23,30 +23,65 @@
             display: none;
             z-index: 1000;
         }
+
+        @media (max-width: 768px) {
+        #navbar-default {
+            transition: max-height 0.3s ease-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        #navbar-default.block {
+            max-height: 500px; /* Adjust this value based on your menu height */
+        }
+    }
     </style>
 </head>
 
-<body class="bg-gray-100 font-sans">
+<body class="font-sans" style="background-color: #F4F6FF;">
 
-    <header class="bg-yellow-500 text-white p-4">
-        <div class="flex items-center">
-            <img src="assets/logo.png" alt="Golden Phoenix Logo" class="h-16 w-16 mr-4">
-            <h1 class="text-4xl font-bold">Golden Phoenix Basketball</h1>
+<nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <div class="flex items-center space-x-3">
+                <img src="assets/logo.png" class="h-8" alt="Golden Phoenix Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Golden Phoenix</span>
+            </div>
+
+            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            </button>
+
+            <div class="hidden w-full md:block md:w-auto ml-auto" id="navbar-default">
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <li>
+                        <a href="./index.php" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <a href="./online-ticket.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pembelian Tiket</a>
+                    </li>
+                    <li>
+                        <a href="./register-member.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pendaftaran Anggota Baru</a>
+                    </li>
+                    <li>
+                        <a href="./paid-tuition.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pembayaran SPP</a>
+                    </li>
+                    <li>
+                        <a href="./about-us.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Tentang Kami</a>
+                    </li>
+                    <li>
+                        <a href="./gallery.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="./merch.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Merchandise</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </header>
-
-    <nav class="bg-gray-800 text-white p-4">
-        <ul class="flex space-x-4">
-            <li><a href="./index.php" class="hover:text-gray-200">Pembelian Tiket</a></li>
-            <li><a href="./about-us.php" class="hover:text-gray-200">Tentang Kami</a></li>
-            <li><a href="./register-member.php" class="hover:text-gray-200">Pendaftaran Anggota Baru</a></li>
-            <li><a href="./paid-tuition.php" class="hover:text-gray-200">Pembayaran</a></li>
-        </ul>
     </nav>
 
     <main class="container mx-auto mt-8 p-4">
         <section id="pendaftaran" class="mb-12">
-            <h2 class="text-3xl font-semibold mb-4">Pendaftaran Anggota Baru</h2>
+            <h2 class="text-4xl font-bold mb-4">Pendaftaran Anggota Baru</h2>
             <form id="registerForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="./register-process.php" method="POST">
                 <div class="mb-5">
                     <label for="Nama Siswa" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
@@ -65,29 +100,29 @@
                             <path d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z" />
                         </svg>
                     </div>
-                    <input type="text" id="memberPhone" name="Nomor Telepon" maxlength="15" aria-describedby="helper-text-explanation" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pl-10" placeholder="123-456-789-012" oninput="formatPhoneNumber(this)" required />
+                    <input type="text" id="memberPhone" name="Nomor Telepon" maxlength="15" aria-describedby="helper-text-explanation" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pl-10" placeholder="123-456-789-012" oninput="formatPhoneNumberRegistration(this)" required />
                 </div>
                 <p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-black-400 mb-3">Pilih nomor telepon sesuai format yang tertera</p>
 
                 <div class="mb-5">
                     <label for="Asal Sekolah" class="block mb-2 text-sm font-medium text-gray-900">Asal Sekolah</label>
-                    <input type="text" id="memberSekolah" name="Asal Sekolah" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan asal sekolah" required />
+                    <input type="text" id="memberSekolah" name="Asal Sekolah" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan asal sekolah" onkeyup="checkNusaputera()" required />
                 </div>
 
                 <div class="mb-5">
                     <label class="block mb-2 text-sm font-medium text-gray-900">Lokasi Sekolah</label>
                     <div class="flex items-center mb-2">
-                        <input id="default-radio-1" type="radio" name="lokasi_sekolah" value="dalam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                        <input id="dalam" type="radio" name="lokasi_sekolah" value="dalam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
                         <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900">Dalam Nusaputera</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="default-radio-2" type="radio" name="lokasi_sekolah" value="luar" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                        <input id="luar" type="radio" name="lokasi_sekolah" value="luar" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
                         <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900">Luar Nusaputera</label>
                     </div>
                 </div>
 
                 <div class="mb-5">
-                    <label for="Alasan Mendaftar" class="block mb-2 text-sm font-medium text-gray-900">Alasan Mendaftar</label>
+                    <label for="Alasan Mendaftar" class="block mb-2 text-sm font-medium text-gray-900">Alasan Mendaftar (Optional)</label>
                     <textarea id="memberAlasan" name="Alasan Mendaftar" rows="4" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Tuliskan alasan mendaftar" required></textarea>
                 </div>
 
@@ -96,8 +131,14 @@
         </section>
     </main>
 
-    <footer class="bg-gray-800 text-white p-4 mt-8">
-        <p>&copy; 2024 Golden Phoenix Basketball. All rights reserved.</p>
+    <footer class="bg-gray-800 text-white p-4 mt-auto">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <p>&copy; 2024 Golden Phoenix Basketball. All rights reserved.</p>
+            <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                <a href="https://aiyo.id/"><img src="./assets/aiyo.png" alt="Aiyo Logo" class="h-8"></a>
+                <a href="https://siega.id"><img src="./assets/siega.png" alt="Siega Logo" class="h-8"></a>
+            </div>
+        </div>
     </footer>
 
     <div id="overlay"></div>
@@ -105,3 +146,36 @@
 </body>
 
 </html>
+
+<script>
+    function formatPhoneNumberRegistration(input) {
+    let value = input.value.replace(/\D/g, "");
+
+    if (value.length > 3 && value.length <= 6) {
+      value = value.slice(0, 3) + "-" + value.slice(3);
+    } else if (value.length > 6 && value.length <= 9) {
+      value = value.slice(0, 3) + "-" + value.slice(3, 6) + "-" + value.slice(6);
+    } else if (value.length > 9) {
+      value =
+        value.slice(0, 3) +
+        "-" +
+        value.slice(3, 6) +
+        "-" +
+        value.slice(6, 9) +
+        "-" +
+        value.slice(9);
+    }
+
+    input.value = value;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('[data-collapse-toggle="navbar-default"]');
+    const navMenu = document.getElementById('navbar-default');
+
+    hamburger.addEventListener('click', function() {
+        navMenu.classList.toggle('hidden');
+        navMenu.classList.toggle('block');
+    });
+});
+</script>

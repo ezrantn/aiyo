@@ -57,3 +57,13 @@ document.getElementById("category").addEventListener("change", function () {
     amountField.value = 100000;
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('[data-collapse-toggle="navbar-default"]');
+    const navMenu = document.getElementById('navbar-default');
+
+    hamburger.addEventListener('click', function() {
+        navMenu.classList.toggle('hidden');
+        navMenu.classList.toggle('block');
+    });
+});
