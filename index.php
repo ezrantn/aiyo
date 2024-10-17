@@ -91,25 +91,25 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <div class="hidden w-full md:block md:w-auto ml-auto" id="navbar-default">
                 <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
-                        <a href="./index.php" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page" <?= $current_page == 'index.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Home</a>
+                        <a href="./index" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page" <?= $current_page == 'index.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Home</a>
                     </li>
                     <li>
-                        <a href="./online-ticket.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'online-ticket.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pembelian Tiket</a>
+                        <a href="./online-ticket" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'online-ticket.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pembelian Tiket</a>
                     </li>
                     <li>
-                        <a href="./register-member.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'register-member.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pendaftaran Anggota Baru</a>
+                        <a href="./register-member" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'register-member.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pendaftaran Anggota Baru</a>
                     </li>
                     <li>
-                        <a href="./paid-tuition.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'paid-tuition.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pembayaran SPP</a>
+                        <a href="./paid-tuition" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'paid-tuition.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pembayaran SPP</a>
                     </li>
                     <li>
-                        <a href="./about-us.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'about-us' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Tentang Kami</a>
+                        <a href="./about-us" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'about-us' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Tentang Kami</a>
                     </li>
                     <li>
-                        <a href="./gallery.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'gallery.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Gallery</a>
+                        <a href="./gallery" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'gallery.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Gallery</a>
                     </li>
                     <li>
-                        <a href="./merch.php" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'merch.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Merchandise</a>
+                        <a href="./merch" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'merch.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Merchandise</a>
                     </li>
                 </ul>
             </div>
@@ -121,7 +121,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <section class="bg-blue-600 text-white rounded-lg shadow-lg p-8 mb-12">
             <h1 class="text-4xl font-bold mb-4">Selamat Datang di Golden Phoenix Basketball!</h1>
             <p class="text-xl mb-6">Bergabunglah dengan klub basket paling bergengsi di Semarang dan rasakan adrenalin dalam setiap permainan!</p>
-            <a href="./online-ticket.php" class="bg-white text-blue-600 font-bold py-2 px-4 rounded hover:bg-blue-100 transition duration-200">Pesan Tiketmu Sekarang!</a>
+            <a href="./online-ticket" class="bg-white text-blue-600 font-bold py-2 px-4 rounded hover:bg-blue-100 transition duration-200">Pesan Tiketmu Sekarang!</a>
         </section>
 
         <!-- Upcoming Matches Section -->
@@ -131,12 +131,12 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-semibold mb-2">Golden Phoenix vs SMA Loyola</h3>
                     <p class="text-gray-600 mb-4">5 Oktober 2024</p>
-                    <a href="./online-ticket.php" class="text-blue-600 hover:text-blue-800 font-bold">Pesan Tiket</a>
+                    <a href="./online-ticket" class="text-blue-600 hover:text-blue-800 font-bold">Pesan Tiket</a>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-semibold mb-2">Golden Phoenix vs SMA Sedes Sapientiae</h3>
                     <p class="text-gray-600 mb-4">12 Oktober 2024</p>
-                    <a href="./online-ticket.php" class="text-blue-600 hover:text-blue-800 font-bold">Pesan Tiket</a>
+                    <a href="./online-ticket" class="text-blue-600 hover:text-blue-800 font-bold">Pesan Tiket</a>
                 </div>
             </div>
         </section>
@@ -146,19 +146,19 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <h2 class="text-3xl font-semibold mb-4">Quick Links</h2>
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="flex flex-col">
-                    <a href="./register-member.php" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200 flex-1">
+                    <a href="./register-member" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200 flex-1">
                         <h3 class="text-xl font-semibold mb-2">Jadilah Anggota Kami</h3>
                         <p class="text-gray-600">Bergabunglah dengan komunitas basket kami hari ini!</p>
                     </a>
                 </div>
                 <div class="flex flex-col">
-                    <a href="./paid-tuition.php" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200 flex-1">
+                    <a href="./paid-tuition" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200 flex-1">
                         <h3 class="text-xl font-semibold mb-2">Pembayaran SPP</h3>
                         <p class="text-gray-600">Kelola pembayaran Anda dengan mudah.</p>
                     </a>
                 </div>
                 <div class="flex flex-col"> <!-- Added margin-bottom for spacing -->
-                    <a href="./gallery.php" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200 flex-1">
+                    <a href="./gallery" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200 flex-1">
                         <h3 class="text-xl font-semibold mb-2">Gallery</h3>
                         <p class="text-gray-600">Tertarik melihat kegiatan yang ada di Golden Phoenix?</p>
                     </a>
@@ -170,7 +170,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 <h2 class="text-3xl font-semibold mb-4">Merchandise</h2>
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="flex flex-col">
-                        <a href="./merch.php" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200 flex-1">
+                        <a href="./merch" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200 flex-1">
                             <h3 class="text-xl font-semibold mb-2">Merchandise</h3>
                             <p class="text-gray-600">Souvenir unik dan cantik untuk mendukung tim tercinta.</p>
                         </a>
