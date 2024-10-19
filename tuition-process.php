@@ -1,46 +1,50 @@
 <?php
-session_start();
 include "token.php";
 include "db-config.php";
+
+if (empty($_POST['memberID'])) {
+    echo "Missing memberID";
+    exit();
+}
 
 date_default_timezone_set('Asia/Jakarta');
 $env = parse_ini_file(".env");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $memberID = $_POST['memberID'];
-    $category = $_POST['category'];
 
-    $stmtUser = $conn->prepare("SELECT nama, email, nomor_telepon FROM pendaftaran WHERE user_id = ?");
+    $stmtUser = $conn->prepare("SELECT nama, email, nomor_telepon, lokasi_sekolah FROM pendaftaran WHERE user_id = ?");
     $stmtUser->bind_param("s", $memberID);
     $stmtUser->execute();
     $resultUser = $stmtUser->get_result();
 
     if ($resultUser->num_rows == 0) {
-        echo "<script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Anggota ID Invalid',
-                text: 'ID Anggota yang Anda masukkan salah',
-            }).then(() => {
-                window.history.back();
-            });
-        </script>";
+        var_dump($resultUser);
         exit();
     }
 
     $userData = $resultUser->fetch_assoc();
     $userEmail = $userData['email'] ?? "";
     $userPhone = $userData['nomor_telepon'] ?? "";
+    $lokasiSekolah = $userData['lokasi_sekolah'] ?? "";
+    $userName = $userData['nama'] ?? "";
 
     $referenceId = "GP2024" . date("mdHis");
     $expireTime = date('Y-m-d\TH:i', strtotime('+3 hours'));
 
-    $payAmount = ($category == 'internal') ? 100000 : 150000;
+    if ($lokasiSekolah == 'dalam') {
+        $payAmount = 100000;
+    } elseif ($lokasiSekolah == 'luar') {
+        $payAmount = 150000;
+    } else {
+        echo "Invalid location status.";
+        exit();
+    }
 
     $bodyCreateInvoice = array(
         "invoiceName" => "Pembayaran SPP Golden Phoenix Basketball Team",
         "referenceId" => $referenceId,
-        "userName" => $memberID,
+        "userName" => $userName,
         "userEmail" => $userEmail,
         "userPhone" => $userPhone,
         "remarks" => "",
@@ -53,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ),
         "items" => array(
             array(
-                "itemName" => "SPP " . ucfirst($category),
+                "itemName" => "SPP Bulanan",
                 "itemType" => "ITEM",
                 "itemCount" => 1,
                 "itemTotalPrice" => $payAmount
@@ -89,31 +93,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $invoiceId = $invoice->responseData->invoiceId;
         $accessToken = $invoice->responseData->accessToken;
 
-        $stmtTransaksi = $conn->prepare("INSERT INTO transaksi (referenceId, userName, payAmount, items, invoiceId, status, timestamp) VALUES (?, ?, ?, ?, ?, ?, current_timestamp())");
-        $status = 'NEW';
-        $items = 'SPP';
+        $stmtPembayaran = $conn->prepare("INSERT INTO pembayaran (user_id, amount, payment_method, invoice_id, status) VALUES (?, ?, ?, ?, 'NEW')");
+        $paymentMethod = "VA_CLOSED";
 
-        $stmtTransaksi->bind_param("ssisss", $referenceId, $memberID, $payAmount, $items, $invoiceId, $status);
+        $stmtPembayaran->bind_param("sdss", $memberID, $payAmount, $paymentMethod, $invoiceId);
 
-        if ($stmtTransaksi->execute()) {
-            $stmtPembayaran = $conn->prepare("INSERT INTO pembayaran (user_id, amount, payment_method, invoice_id, status) VALUES (?, ?, ?, ?, 'pending')");
-            $paymentMethod = "VA_CLOSED";
-
-            $stmtPembayaran->bind_param("sdss", $memberID, $payAmount, $paymentMethod, $invoiceId);
-
-            if ($stmtPembayaran->execute()) {
-                header("Location: tuition-check.php?invoiceId=$invoiceId&accessToken=$accessToken");
-                exit();
-            } else {
-                echo "Error inserting into pembayaran: " . $stmtPembayaran->error;
-            }
-
-            $stmtPembayaran->close();
+        if ($stmtPembayaran->execute()) {
+            header("Location: tuition-check.php?invoiceId=$invoiceId&accessToken=$accessToken");
+            exit();
         } else {
-            echo "Error inserting into transaksi: " . $stmtTransaksi->error;
+            echo "Error inserting into pembayaran: " . $stmtPembayaran->error;
         }
 
-        $stmtTransaksi->close();
+        $stmtPembayaran->close();
     } else {
         echo "Error creating invoice: " . $invoice->responseMessage;
     }

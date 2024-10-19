@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/goldenphoenix/assets/favicon-16x16.png">
     <link rel="manifest" href="/goldenphoenix/manifest.json">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         body {
             background-color: #F4F6FF;
@@ -46,7 +46,7 @@
 </head>
 <body class="font-sans flex flex-col min-h-screen">
 
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <div class="flex items-center space-x-3">
                 <img src="assets/logo.png" class="h-8" alt="Golden Phoenix Logo" />
@@ -177,9 +177,10 @@
             </div>
         </div>
     </footer>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        const swiper = new Swiper('.swiper-container', {
+         const swiper = new Swiper('.swiper-container', {
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
@@ -189,16 +190,18 @@
             prevEl: '.swiper-button-prev',
         },
         });
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            const hamburger = document.querySelector(
+                '[data-collapse-toggle="navbar-default"]',
+            );
+            const navMenu = document.getElementById("navbar-default");
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.querySelector('[data-collapse-toggle="navbar-default"]');
-            const navMenu = document.getElementById('navbar-default');
-
-            hamburger.addEventListener('click', function() {
-                navMenu.classList.toggle('hidden');
-                navMenu.classList.toggle('block');
+            hamburger.addEventListener("click", function () {
+                navMenu.classList.toggle("hidden");
+                navMenu.classList.toggle("block");
             });
-        });
-</script>
+            });
+    </script>
 </body>
 </html>

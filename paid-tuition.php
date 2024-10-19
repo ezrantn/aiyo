@@ -77,7 +77,7 @@
                 <button type="submit" id="paymentButton" class="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition duration-200">Bayar</button>
 
                 <div class="mt-4 text-center">
-                    <a href="./forgot-id.php" class="text-sm text-blue-500 hover:underline">Forgot ID?</a>
+                    <a href="./forgot-id" class="text-sm text-blue-500 hover:underline">Forgot ID?</a>
                 </div>
             </form>
         </section>
@@ -111,35 +111,8 @@
             if (result.isConfirmed) {
                 document.getElementById('paymentForm').submit();
             }
-        });
+        })
     });
-
-    function updateSelectOptions(lokasi) {
-        var selectElement = document.getElementById('fee_category');
-        var selectContainer = document.getElementById('fee-select-container');
-
-        // Show the select element
-        selectContainer.style.display = 'block';
-
-        // Clear existing options
-        selectElement.innerHTML = '';
-
-        // Add new options based on the selected location
-        if (lokasi === 'dalam') {
-            var option = document.createElement('option');
-            option.value = 'internal';
-            option.text = 'Dalam Sekolah (100k)';
-            selectElement.appendChild(option);
-        } else if (lokasi === 'luar') {
-            var option = document.createElement('option');
-            option.value = 'external';
-            option.text = 'Luar Sekolah (150k)';
-            selectElement.appendChild(option);
-        }
-
-        // Set the select element to be readonly (uneditable)
-        selectElement.setAttribute('disabled', true);
-    }
 
     document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('[data-collapse-toggle="navbar-default"]');

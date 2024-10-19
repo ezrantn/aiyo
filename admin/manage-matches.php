@@ -7,29 +7,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
         switch ($_POST['action']) {
             case 'add':
-                $match_name = $_POST['match_name'];
-                $match_date = $_POST['match_date'];
-                $stmt = $pdo->prepare("INSERT INTO match_options (match_name, match_date) VALUES (?, ?)");
-                $stmt->execute([$match_name, $match_date]);
+                $match_name = $conn->real_escape_string($_POST['match_name']);
+                $match_date = $conn->real_escape_string($_POST['match_date']);
+                $query = "INSERT INTO matches (match_name, match_date) VALUES ('$match_name', '$match_date')";
+                $conn->query($query);
                 break;
             case 'edit':
-                $id = $_POST['id'];
-                $match_name = $_POST['match_name'];
-                $match_date = $_POST['match_date'];
-                $stmt = $pdo->prepare("UPDATE match_options SET match_name = ?, match_date = ? WHERE id = ?");
-                $stmt->execute([$match_name, $match_date, $id]);
+                $id = intval($_POST['id']);
+                $match_name = $conn->real_escape_string($_POST['match_name']);
+                $match_date = $conn->real_escape_string($_POST['match_date']);
+                $query = "UPDATE matches SET match_name = '$match_name', match_date = '$match_date' WHERE id = $id";
+                $conn->query($query);
                 break;
             case 'delete':
-                $id = $_POST['id'];
-                $stmt = $pdo->prepare("DELETE FROM match_options WHERE id = ?");
-                $stmt->execute([$id]);
+                $id = intval($_POST['id']);
+                $query = "DELETE FROM matches WHERE id = $id";
+                $conn->query($query);
                 break;
         }
     }
 }
 
-$stmt = $pdo->query("SELECT * FROM match_options ORDER BY match_date");
-$match_options = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$result = $conn->query("SELECT * FROM matches ORDER BY match_date");
+$matches = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -37,16 +37,16 @@ $match_options = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Match Options | Admin Dashboard</title>
+    <title>Manage Matches | Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto p-6">
-        <h1 class="text-2xl font-bold mb-6">Manage Match Options</h1>
+        <h1 class="text-2xl font-bold mb-6">Manage Matches</h1>
 
-        <!-- Add new match option form -->
+        <!-- Add new match form -->
         <form action="" method="POST" class="mb-8 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <h2 class="text-xl font-semibold mb-4">Add New Match Option</h2>
+            <h2 class="text-xl font-semibold mb-4">Add New Match</h2>
             <input type="hidden" name="action" value="add">
             <div class="mb-4">
                 <label for="match_name" class="block text-gray-700 text-sm font-bold mb-2">Match Name:</label>
@@ -56,12 +56,12 @@ $match_options = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <label for="match_date" class="block text-gray-700 text-sm font-bold mb-2">Match Date:</label>
                 <input type="date" id="match_date" name="match_date" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             </div>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Match Option</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Match</button>
         </form>
 
-        <!-- List of existing match options -->
+        <!-- List of existing matches -->
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <h2 class="text-xl font-semibold mb-4">Existing Match Options</h2>
+            <h2 class="text-xl font-semibold mb-4">Existing Matches</h2>
             <table class="w-full">
                 <thead>
                     <tr>
@@ -71,17 +71,17 @@ $match_options = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($match_options as $option): ?>
+                    <?php foreach ($matches as $match): ?>
                         <tr>
-                            <td class="border px-4 py-2"><?= htmlspecialchars($option['match_name']) ?></td>
-                            <td class="border px-4 py-2"><?= htmlspecialchars($option['match_date']) ?></td>
+                            <td class="border px-4 py-2"><?= htmlspecialchars($match['match_name']) ?></td>
+                            <td class="border px-4 py-2"><?= htmlspecialchars($match['match_date']) ?></td>
                             <td class="border px-4 py-2">
                                 <form action="" method="POST" class="inline">
                                     <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="id" value="<?= $option['id'] ?>">
+                                    <input type="hidden" name="id" value="<?= $match['id'] ?>">
                                     <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button>
                                 </form>
-                                <button onclick="editMatch(<?= $option['id'] ?>, '<?= htmlspecialchars($option['match_name']) ?>', '<?= $option['match_date'] ?>')" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</button>
+                                <button onclick="editMatch(<?= $match['id'] ?>, '<?= htmlspecialchars($match['match_name']) ?>', '<?= $match['match_date'] ?>')" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -135,3 +135,7 @@ $match_options = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </script>
 </body>
 </html>
+
+<?php
+$conn->close();
+?>

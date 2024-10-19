@@ -1,15 +1,19 @@
-AddType application/manifest+json .webmanifest
-
+# Enable URL rewriting
 RewriteEngine On
 
-# Check if the requested filename without extension exists as a .php file
+# Handle .webmanifest files
+AddType application/manifest+json .webmanifest
+
+# Check if the requested filename exists as a .php file
 RewriteCond %{REQUEST_FILENAME}.php -f
 
-# Rewrite the URL to remove the .php extension
+# Rewrite the URL to remove the .php extension (for root directory files)
 RewriteRule ^([^/]+)$ $1.php [QSA,L]
 
-# If it's a request in a subdirectory, handle it as well
+# If the request is in a subdirectory, check if a PHP file exists
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME}/ -d
+RewriteCond %{REQUEST_FILENAME}.php -f
+
+# Rewrite subdirectory URLs (to ensure proper routing)
 RewriteRule ^(.+)$ $1.php [QSA,L]

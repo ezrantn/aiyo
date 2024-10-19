@@ -65,7 +65,6 @@ include "./otp.php";
 $sql = "UPDATE transaksi SET status = 'PAID', timestamp = current_timestamp() WHERE invoiceId = '" . $invoiceId . "'";
 
 if ($conn->query($sql) === TRUE) {
-
     include "./phone.php";
 } else {
 
@@ -78,7 +77,13 @@ if ($conn->query($sql) === TRUE) {
     fclose($myfile);
 }
 
-$conn->close();
+$paidTuition = "UPDATE pembayaran SET status = 'PAID', updated_at = current_timestamp() WHERE invoice_id = '" . $invoiceId . "'";
+if ($conn->query($paidTuition) === TRUE) {
+    include './phone.php';
+} else {
+    $teks = "Error updating pembayaran status: " . $conn->error;
+    file_put_contents("error.txt", $teks . "\n", FILE_APPEND);
+}
 
 $myfile = fopen("payment.txt", "a") or die("Unable to open file!");
 

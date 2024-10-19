@@ -1,56 +1,56 @@
 <?php
 header('Content-Type: text/plain');
-include "db-config.php";
+include "./db-config.php";
 
-// Map form fields to database columns
 $formData = [
-    'Nama Siswa' => $_POST['Nama Siswa'] ?? '',
-    'Email' => $_POST['Email'] ?? '',
-    'Nomor Telepon' => $_POST['Nomor Telepon'] ?? '',
-    'Asal Sekolah' => $_POST['Asal Sekolah'] ?? '',
-    'Alasan Mendaftar' => $_POST['Alasan Mendaftar'] ?? '',
+    'nama' => $_POST['nama'] ?? '',
+    'email' => $_POST['email'] ?? '',
+    'nomor_telepon' => $_POST['nomor_telepon'] ?? '',
+    'asal_sekolah' => $_POST['asal_sekolah'] ?? '',
+    'alasan_mendaftar' => $_POST['alasan_mendaftar'] ?? '',
     'lokasi_sekolah' => $_POST['lokasi_sekolah'] ?? ''
 ];
 
-// Remove dashes from phone number
-$formData['Nomor Telepon'] = str_replace("-", "", $formData['Nomor Telepon']);
-
-// Generate a unique user ID
+$formData['nomor_telepon'] = str_replace("-", "", $formData['nomor_telepon']);
 $user_id = uniqid();
 
-// Prepare SQL and bind parameters
 $sql = "INSERT INTO pendaftaran (user_id, nama, email, nomor_telepon, asal_sekolah, alasan, lokasi_sekolah, created_at)
 VALUES (?, ?, ?, ?, ?, ?, ?, current_timestamp())";
 
 $stmt = $conn->prepare($sql);
 
 if ($stmt) {
-    // Bind mapped values to match database column order
     $stmt->bind_param(
         "sssssss",
         $user_id,
-        $formData['Nama Siswa'],
-        $formData['Email'],
-        $formData['Nomor Telepon'],
-        $formData['Asal Sekolah'],
-        $formData['Alasan Mendaftar'],
+        $formData['nama'],
+        $formData['email'],
+        $formData['nomor_telepon'],
+        $formData['asal_sekolah'],
+        $formData['alasan_mendaftar'],
         $formData['lokasi_sekolah']
     );
 
     if ($stmt->execute()) {
-        // Database insertion successful; proceed to Google Sheets integration
-        echo "Sukses memasukan data|$user_id";
+        // Query the user_id from the database using the email
+        $query = "SELECT user_id FROM pendaftaran WHERE email = ?";
+        $stmt_select = $conn->prepare($query);
+        $stmt_select->bind_param("s", $formData['email']);
+        $stmt_select->execute();
+        $stmt_select->bind_result($retrieved_user_id);
+        $stmt_select->fetch();
+
+        echo json_encode(['success' => true, 'user_id' => $retrieved_user_id]);
+        $stmt_select->close();
     } else {
-        // Database insertion failed
-        echo 'Error: ' . $stmt->error;
+        echo json_encode(['success' => false, 'error' => $stmt->error]);
         exit();
     }
 
     $stmt->close();
 } else {
-    echo 'Error preparing statement: ' . $conn->error;
+    echo json_encode(['success' => false, 'error' => $conn->error]);
     exit();
 }
 
 $conn->close();
-?>

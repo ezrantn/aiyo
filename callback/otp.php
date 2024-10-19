@@ -9,7 +9,7 @@ if (isset($_POST['submit-otp'])) {
     mysqli_query($conn, "DELETE FROM otp WHERE nomor = '$nomor'");
 
     $otp = rand(100000, 999999);
-    $waktu = time();
+    $waktu = date("Y-m-d H:i:s");
 
     mysqli_query($conn, "INSERT INTO otp (nomor, otp, waktu) VALUES ('$nomor', '$otp', '$waktu')");
 
@@ -29,7 +29,7 @@ if (isset($_POST['submit-otp'])) {
     $result = curl_exec($curl);
     curl_close($curl);
 
-    header("Location: verify-user.php?nomor=$nomor");
+    header("Location: verify-user?nomor=$nomor");
     exit();
 } elseif (isset($_POST['submit-login'])) {
     $otp = mysqli_real_escape_string($conn, $_POST['otp']);

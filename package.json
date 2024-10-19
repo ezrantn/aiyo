@@ -4,6 +4,7 @@
     "prettier": "^3.3.3"
   },
   "dependencies": {
-    "mjml": "^4.15.3"
+    "mjml": "^4.15.3",
+    "swiper": "^11.1.14"
   }
 }

@@ -1,0 +1,61 @@
+[18-Oct-2024 03:59:39 UTC] Inserting into database: {"Nama Siswa":"","Email":"wefule@mailinator.com","Nomor Telepon":"","Asal Sekolah":"","Alasan Mendaftar":"","lokasi_sekolah":"luar"}
+[18-Oct-2024 04:03:11 UTC] Inserting into database: {"nama":"","email":"","nomor_telepon":"","asal_sekolah":"","alasan_mendaftar":"","lokasi_sekolah":"luar"}
+[18-Oct-2024 04:04:09 UTC] Inserting into database: {"nama":"","email":"","nomor_telepon":"","asal_sekolah":"","alasan_mendaftar":"","lokasi_sekolah":"luar"}
+[18-Oct-2024 04:08:32 UTC] Inserting into database: {"nama":"Cally Mcdowell","email":"zenicup@mailinator.com","nomor_telepon":"13121121073","asal_sekolah":"Incididunt nostrum m","alasan_mendaftar":"Nostrum architecto d","lokasi_sekolah":"dalam"}
+[18-Oct-2024 04:12:17 UTC] Inserting into database: {"nama":"Kennedy King","email":"taju@mailinator.com","nomor_telepon":"19473889274","asal_sekolah":"Dignissimos et aute ","alasan_mendaftar":"Dolor nostrud nihil ","lokasi_sekolah":"dalam"}
+[18-Oct-2024 04:13:00 UTC] Inserting into database: {"nama":"Jesse Mckinney","email":"sitosywi@mailinator.com","nomor_telepon":"17775954712","asal_sekolah":"Earum ducimus quisq","alasan_mendaftar":"Cillum commodi rerum","lokasi_sekolah":"dalam"}
+[18-Oct-2024 04:15:55 UTC] Inserting into database: {"nama":"Trevor Newton","email":"xyzehyda@mailinator.com","nomor_telepon":"13889383911","asal_sekolah":"Labore distinctio R","alasan_mendaftar":"Aliqua Eos ex aliqu","lokasi_sekolah":"dalam"}
+[18-Oct-2024 04:17:33 UTC] Inserting into database: {"nama":"Xavier Andrews","email":"makeciq@mailinator.com","nomor_telepon":"17179545307","asal_sekolah":"Doloribus harum repe","alasan_mendaftar":"Repudiandae ratione ","lokasi_sekolah":"luar"}
+[18-Oct-2024 04:17:47 UTC] Inserting into database: {"nama":"Ivory Beach","email":"lawitoj@mailinator.com","nomor_telepon":"18939052266","asal_sekolah":"Non ut aut vitae dig","alasan_mendaftar":"Dolor totam quia lab","lokasi_sekolah":"dalam"}
+[18-Oct-2024 14:44:13 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/mesy7597/public_html/goldenphoenix/tuition-process.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/tuition-process.php on line 14
+[18-Oct-2024 14:44:27 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/mesy7597/public_html/goldenphoenix/tuition-process.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/tuition-process.php on line 14
+[18-Oct-2024 14:45:03 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/mesy7597/public_html/goldenphoenix/tuition-process.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/tuition-process.php on line 14
+[18-Oct-2024 14:45:20 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/mesy7597/public_html/goldenphoenix/tuition-process.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/tuition-process.php on line 14
+[18-Oct-2024 14:45:48 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/mesy7597/public_html/goldenphoenix/tuition-process.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/tuition-process.php on line 14
+[18-Oct-2024 14:45:58 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/mesy7597/public_html/goldenphoenix/tuition-process.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/tuition-process.php on line 14
+[18-Oct-2024 14:47:04 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/mesy7597/public_html/goldenphoenix/tuition-process.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/tuition-process.php on line 14
+[18-Oct-2024 14:47:23 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/mesy7597/public_html/goldenphoenix/tuition-process.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/tuition-process.php on line 14
+[18-Oct-2024 14:48:56 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/mesy7597/public_html/goldenphoenix/tuition-process.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/tuition-process.php on line 14
+[18-Oct-2024 14:50:53 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/mesy7597/public_html/goldenphoenix/tuition-process.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/tuition-process.php on line 14
+[18-Oct-2024 14:52:48 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/mesy7597/public_html/goldenphoenix/tuition-process.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/tuition-process.php on line 15
+[18-Oct-2024 14:57:09 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/mesy7597/public_html/goldenphoenix/tuition-process.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/tuition-process.php on line 17
+[18-Oct-2024 14:59:13 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/mesy7597/public_html/goldenphoenix/tuition-process.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/tuition-process.php on line 17

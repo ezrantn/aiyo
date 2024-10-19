@@ -39,7 +39,7 @@
 
 <body class="font-sans" style="background-color: #F4F6FF;">
 
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <div class="flex items-center space-x-3">
                 <img src="assets/logo.png" class="h-8" alt="Golden Phoenix Logo" />
@@ -82,15 +82,15 @@
     <main class="container mx-auto mt-8 p-4">
         <section id="pendaftaran" class="mb-12">
             <h2 class="text-4xl font-bold mb-4">Pendaftaran Anggota Baru</h2>
-            <form id="registerForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="./register-process.php" method="POST">
+            <form id="registerForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="./register-process.php" method="POST" enctype="multipart/form-data">
                 <div class="mb-5">
-                    <label for="Nama Siswa" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
-                    <input type="text" id="memberName" name="Nama Siswa" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama Anda" required />
+                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
+                    <input type="text" id="memberName" name="nama" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama Anda" required />
                 </div>
 
                 <div class="mb-5">
                     <label for="Email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                    <input type="email" id="memberEmail" name="Email" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan email Anda" required />
+                    <input type="email" id="memberEmail" name="email" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan email Anda" required />
                 </div>
 
                 <label for="Nomor Telepon" class="block mb-2 text-sm font-medium text-gray-900">Nomor Telepon</label>
@@ -100,13 +100,13 @@
                             <path d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z" />
                         </svg>
                     </div>
-                    <input type="text" id="memberPhone" name="Nomor Telepon" maxlength="15" aria-describedby="helper-text-explanation" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pl-10" placeholder="123-456-789-012" oninput="formatPhoneNumberRegistration(this)" required />
+                    <input type="text" id="memberPhone" name="nomor_telepon" maxlength="15" aria-describedby="helper-text-explanation" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pl-10" placeholder="123-456-789-012" oninput="formatPhoneNumberRegistration(this)" required />
                 </div>
                 <p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-black-400 mb-3">Pilih nomor telepon sesuai format yang tertera</p>
 
                 <div class="mb-5">
                     <label for="Asal Sekolah" class="block mb-2 text-sm font-medium text-gray-900">Asal Sekolah</label>
-                    <input type="text" id="memberSekolah" name="Asal Sekolah" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan asal sekolah" onkeyup="checkNusaputera()" required />
+                    <input type="text" id="memberSekolah" name="asal_sekolah" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan asal sekolah" onkeyup="checkNusaputera()" required />
                 </div>
 
                 <div class="mb-5">
@@ -123,7 +123,7 @@
 
                 <div class="mb-5">
                     <label for="Alasan Mendaftar" class="block mb-2 text-sm font-medium text-gray-900">Alasan Mendaftar (Optional)</label>
-                    <textarea id="memberAlasan" name="Alasan Mendaftar" rows="4" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Tuliskan alasan mendaftar" required></textarea>
+                    <textarea id="memberAlasan" name="alasan_mendaftar" rows="4" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Tuliskan alasan mendaftar" required></textarea>
                 </div>
 
                 <button type="submit" id="registerButton" class="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition duration-200">Daftar</button>
@@ -142,7 +142,6 @@
     </footer>
 
     <div id="overlay"></div>
-    <script src="./scripts/register-script.js"></script>
 </body>
 
 </html>
@@ -178,4 +177,88 @@
         navMenu.classList.toggle('block');
     });
 });
+
+document.getElementById('registerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const form = this;
+    const formData = new FormData(form);
+    const formAction = form.action;
+
+    Swal.fire({
+        title: 'Apakah data sudah benar?',
+        text: "Pastikan semua data telah diisi dengan benar!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Daftar',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(formAction, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const userIdHtml = `
+                        <div style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+                            <h2 style="font-weight: bold; color: #3085d6; margin-bottom: 10px;">Pendaftaran Berhasil!</h2>
+                            <p style="font-size: 1rem; margin-bottom: 10px;">Terima kasih telah mendaftar! Berikut adalah <strong>User ID</strong> Anda:</p>
+                            <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px;">
+                                <span id="userId" style="font-size: 1.5rem; font-weight: bold; color: #4CAF50; border: 2px dashed #4CAF50; padding: 10px 20px; border-radius: 8px; margin-right: 10px;">
+                                    ${data.user_id}
+                                </span>
+                                <button onclick="copyUserId()" style="background-color: #4CAF50; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+                                    <i class="fas fa-copy"></i> Salin
+                                </button>
+                            </div>
+                            <p style="margin-top: 10px; font-size: 0.9rem; color: #555;">Gunakan User ID ini untuk melakukan pembayaran SPP Anda.</p>
+                        </div>
+                    `;
+
+                    Swal.fire({
+                        html: userIdHtml,
+                        showConfirmButton: true,
+                        confirmButtonText: 'Oke',
+                        customClass: {
+                            popup: 'animated fadeIn'
+                        }
+                    }).then(() => {
+                        form.reset();
+                    });
+                } else {
+                    console.error('Error:', data.error);
+                    Swal.fire('Error!', 'Terjadi kesalahan saat mendaftar.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire('Error!', 'Terjadi kesalahan saat mendaftar.', 'error');
+            });
+        }
+    });
+});
+
+function copyUserId() {
+    const userIdElement = document.getElementById('userId');
+    const tempInput = document.createElement('input');
+    tempInput.style.position = 'absolute';
+    tempInput.style.left = '-9999px';
+    tempInput.value = userIdElement.textContent.trim(); 
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+
+    Swal.fire({
+        icon: 'success',
+        title: 'Disalin!',
+        text: 'User ID berhasil disalin ke clipboard.',
+        timer: 2000,
+        showConfirmButton: false
+    });
+}
 </script>

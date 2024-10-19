@@ -1,5 +1,10 @@
 <?php
+include "./db-config.php";
+
 $current_page = basename($_SERVER['PHP_SELF']);
+
+$result = $conn->query("SELECT * FROM matches ORDER BY match_date");
+$matches = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -129,6 +134,11 @@ $current_page = basename($_SERVER['PHP_SELF']);
                             <option value="">-- Pilih Pertandingan --</option>
                             <option value="loyola">Golden Phoenix vs SMA Loyola, 5 Oktober 2024</option>
                             <option value="sedes">Golden Phoenix vs SMA Sedes Sapientiae, 12 Oktober 2024</option>
+                            <?php foreach ($matches as $match): ?>
+                                <option value="<?= $match['id'] ?>">
+                                    <?= htmlspecialchars($match['match_name']) ?>, <?= date('d F Y', strtotime($match['match_date'])) ?>
+                                </option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 
@@ -171,3 +181,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 </body>
 
 </html>
+
+<?php
+$conn->close();
+?>
