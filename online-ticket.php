@@ -115,8 +115,8 @@ $matches = $result->fetch_all(MYSQLI_ASSOC);
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5
                                        focus:ring-blue-500 focus:border-blue-500">
                             <option value="">-- Pilih Jenis Tiket --</option>
-                            <option value="Reguler">Reguler (Rp 10.000)</option>
-                            <option value="Premium">Premium (Rp 15.000)</option>
+                            <option value="Reguler">Reguler (Rp 11.000)</option>
+                            <option value="Premium">Premium (Rp 16.000)</option>
                         </select>
                     </div>
 

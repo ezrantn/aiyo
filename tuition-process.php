@@ -33,9 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $expireTime = date('Y-m-d\TH:i', strtotime('+3 hours'));
 
     if ($lokasiSekolah == 'dalam') {
-        $payAmount = 100000;
+        $payAmount = 101000;
     } elseif ($lokasiSekolah == 'luar') {
-        $payAmount = 150000;
+        $payAmount = 151000;
     } else {
         echo "Invalid location status.";
         exit();

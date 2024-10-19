@@ -18,8 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ticketType = $_POST['ticketType'];
     $quantity = (int)$_POST['quantity'];
 
-    $vipPrice = 15000;
-    $nonVipPrice = 10000;
+    $vipPrice = 16000;
+    $nonVipPrice = 11000;
     $payAmount = 0;
 
     if ($ticketType == 'Premium') {
