@@ -44,25 +44,25 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <div class="hidden w-full md:block md:w-auto ml-auto" id="navbar-default">
                 <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
-                        <a href="./index" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page" <?= $current_page == 'index.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Home</a>
+                        <a href="./index" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page" <?= $current_page == 'index' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Home</a>
                     </li>
                     <li>
-                        <a href="./online-ticket" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'online-ticket.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pembelian Tiket</a>
+                        <a href="./online-ticket" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'online-ticket' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pembelian Tiket</a>
                     </li>
                     <li>
-                        <a href="./register-member" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'register-member.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pendaftaran Anggota Baru</a>
+                        <a href="./register-member" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'register-member' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pendaftaran Anggota Baru</a>
                     </li>
                     <li>
-                        <a href="./paid-tuition" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'paid-tuition.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pembayaran SPP</a>
+                        <a href="./paid-tuition" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'paid-tuition' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pembayaran SPP</a>
                     </li>
                     <li>
-                        <a href="./about-us" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'about-us.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Tentang Kami</a>
+                        <a href="./about-us" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'about-us' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Tentang Kami</a>
                     </li>
                     <li>
-                        <a href="./gallery" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'gallery.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Gallery</a>
+                        <a href="./gallery" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'gallery' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Gallery</a>
                     </li>
                     <li>
-                        <a href="./merch" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'merch.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Merchandise</a>
+                        <a href="./merch" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'merch' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Merchandise</a>
                     </li>
                 </ul>
             </div>

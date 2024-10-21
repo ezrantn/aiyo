@@ -59,3 +59,12 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/mesy7597/public_html/goldenphoenix/tuition-process.php on line 17
+[21-Oct-2024 14:31:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/mesy7597/public_html/goldenphoenix/response.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/response.php on line 16
+[21-Oct-2024 14:41:26 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/mesy7597/public_html/goldenphoenix/response.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/mesy7597/public_html/goldenphoenix/response.php on line 18
+[21-Oct-2024 14:48:05 Asia/Jakarta] PHP Warning:  Invalid argument supplied for foreach() in /home/mesy7597/public_html/goldenphoenix/response.php on line 17

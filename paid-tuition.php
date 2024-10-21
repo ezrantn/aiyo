@@ -68,7 +68,7 @@
     <main class="container mx-auto mt-8 p-4 flex-grow">
         <section id="pembayaran" class="mb-12">
             <h2 class="text-4xl font-bold mb-4">Pembayaran SPP</h2>
-            <form id="paymentForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="./tuition-process.php" method="POST">
+            <form id="paymentForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="./tuition-process" method="POST">
                 <div class="mb-5">
                     <label for="memberID" class="block mb-2 text-sm font-medium text-gray-900">ID Anggota</label>
                     <input type="text" id="memberID" name="memberID" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan ID anggota" required />

@@ -15,7 +15,7 @@ include "./db-config.php";
 </head>
 
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <form method="POST" action="./callback/otp.php" accept-charset="utf-8" class="bg-white shadow-lg rounded-lg w-full max-w-md p-8">
+    <form method="POST" action="./callback/otp" accept-charset="utf-8" class="bg-white shadow-lg rounded-lg w-full max-w-md p-8">
         <h1 class="text-center text-2xl font-bold mb-6 text-gray-900">Verifikasi OTP</h1>
 
         <div class="<?php echo isset($_POST['submit-otp']) ? 'hidden' : 'flex' ?> flex-col mb-6">

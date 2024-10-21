@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['admin_id'] = $admin['admin_id'];
             $_SESSION['admin_email'] = $admin['email'];
 
-            header('Location: dashboard.php');
+            header('Location: dashboard');
             exit();
         } else {
             $error_message = "Invalid password. Please try again.";
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label for="password" class="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800">Password</label>
                 </div>
                 <div class="my-6">
-                    <button type="submit" class="w-full rounded-md bg-black px-3 py-4 text-white focus:bg-gray-600 focus:outline-none"><a href="./dashboard.php"></a>Login</button>
+                    <button type="submit" class="w-full rounded-md bg-black px-3 py-4 text-white focus:bg-gray-600 focus:outline-none"><a href="./dashboard"></a>Login</button>
                 </div>
             </form>
         </div>

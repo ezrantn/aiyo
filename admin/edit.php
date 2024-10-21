@@ -3,7 +3,7 @@ include "../db-config.php";
 
 // Check if the ID is provided
 if (!isset($_GET['id'])) {
-    header("Location: register-history.php"); // Redirect if no ID is provided
+    header("Location: register-history"); // Redirect if no ID is provided
     exit();
 }
 
@@ -17,7 +17,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows === 0) {
-    header("Location: register-history.php"); // Redirect if the record is not found
+    header("Location: register-history"); // Redirect if the record is not found
     exit();
 }
 
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $update_stmt->bind_param("sssssi", $nama, $email, $nomor_telepon, $asal_sekolah, $alasan, $id);
 
     if ($update_stmt->execute()) {
-        header("Location: register-history.php?msg=Record updated successfully");
+        header("Location: register-history?msg=Record updated successfully");
         exit();
     } else {
         $error = "Failed to update the record.";
@@ -58,21 +58,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="bg-gray-100 font-sans">
     <div id="dashboard" class="flex flex-col md:flex-row min-h-screen">
-        <!-- Sidebar -->
-        <div class="w-full md:w-64 bg-white shadow-lg p-6 h-full">
-            <h2 class="text-2xl font-bold mb-6 text-gray-800">Admin Dashboard</h2>
-            <ul class="space-y-2">
+        <div class="w-full md:w-64 bg-gray-800 shadow-xl p-6 h-full text-white">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold">Admin Dashboard</h2>
+                <img src="/goldenphoenix/assets/logo.png" alt="Logo" class="w-10 h-10 rounded-full">
+            </div>
+
+            <ul class="space-y-4">
                 <li>
-                    <a href="./register-history.php" class="text-gray-700 hover:bg-indigo-500 hover:text-white transition-colors duration-200 block p-3 rounded-lg">List Pendaftaran Member</a>
+                    <a href="./dashboard" class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9.75v7.5c0 1.379 1.12 2.5 2.5 2.5h13c1.38 0 2.5-1.121 2.5-2.5v-7.5"></path><path d="M21 9.75v-3.5a2.5 2.5 0 00-2.5-2.5h-13A2.5 2.5 0 003 6.25v3.5"></path></svg>
+                        <span>Dashboard</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="./tuition-history.php" class="text-gray-700 hover:bg-indigo-500 hover:text-white transition-colors duration-200 block p-3 rounded-lg">List Pembayaran SPP Member</a>
+                    <a href="./register-history" class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v4m0 4h.01"></path><path d="M21 16.05A9.9 9.9 0 0012.15 3H12a9.9 9.9 0 00-9.9 9.9v.1a9.9 9.9 0 009.9 9.9h.15A9.9 9.9 0 0021 16.05z"></path></svg>
+                        <span>List Pendaftaran Member</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="./manage-matches.php" class="text-gray-700 hover:bg-indigo-500 hover:text-white transition-colors duration-200 block p-3 rounded-lg">Atur Jadwal Pertandingan</a>
+                    <a href="./tuition-history" class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v4m0 4h.01"></path><path d="M21 16.05A9.9 9.9 0 0012.15 3H12a9.9 9.9 0 00-9.9 9.9v.1a9.9 9.9 0 009.9 9.9h.15A9.9 9.9 0 0021 16.05z"></path></svg>
+                        <span>List Pembayaran SPP Member</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="./log-out.php" class="text-gray-700 hover:bg-indigo-500 hover:text-white transition-colors duration-200 block p-3 rounded-lg">Log Out</a>
+                    <a href="./manage-matches" class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v4m0 4h.01"></path><path d="M21 16.05A9.9 9.9 0 0012.15 3H12a9.9 9.9 0 00-9.9 9.9v.1a9.9 9.9 0 009.9 9.9h.15A9.9 9.9 0 0021 16.05z"></path></svg>
+                        <span>Atur Jadwal Pertandingan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./log-out.php" class="flex items-center space-x-3 p-3 bg-red-500 rounded-lg hover:bg-red-600 transition duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 16l4-4m0 0l-4-4m4 4H7"></path><path d="M12 19H5a2 2 0 01-2-2V7a2 2 0 012-2h7"></path></svg>
+                        <span>Log Out</span>
+                    </a>
                 </li>
             </ul>
         </div>

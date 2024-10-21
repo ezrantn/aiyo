@@ -82,7 +82,7 @@
     <main class="container mx-auto mt-8 p-4">
         <section id="pendaftaran" class="mb-12">
             <h2 class="text-4xl font-bold mb-4">Pendaftaran Anggota Baru</h2>
-            <form id="registerForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="./register-process.php" method="POST" enctype="multipart/form-data">
+            <form id="registerForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="./register-process" method="POST" enctype="multipart/form-data">
                 <div class="mb-5">
                     <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
                     <input type="text" id="memberName" name="nama" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama Anda" required />
@@ -247,7 +247,7 @@ function copyUserId() {
     const tempInput = document.createElement('input');
     tempInput.style.position = 'absolute';
     tempInput.style.left = '-9999px';
-    tempInput.value = userIdElement.textContent.trim(); 
+    tempInput.value = userIdElement.textContent.trim();
     document.body.appendChild(tempInput);
     tempInput.select();
     document.execCommand('copy');

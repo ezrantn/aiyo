@@ -3,7 +3,7 @@ include "../db-config.php";
 
 // Check if the ID is provided
 if (!isset($_GET['id'])) {
-    header("Location: register-history.php"); // Redirect if no ID is provided
+    header("Location: register-history"); // Redirect if no ID is provided
     exit();
 }
 
@@ -15,10 +15,10 @@ $stmt = $conn->prepare($delete_query);
 $stmt->bind_param("i", $id);
 
 if ($stmt->execute()) {
-    header("Location: register-history.php?msg=Record deleted successfully"); // Redirect after successful deletion
+    header("Location: register-history?msg=Record deleted successfully"); // Redirect after successful deletion
     exit();
 } else {
-    header("Location: register-history.php?msg=Failed to delete record"); // Redirect if deletion fails
+    header("Location: register-history?msg=Failed to delete record"); // Redirect if deletion fails
     exit();
 }
 ?>

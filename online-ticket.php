@@ -51,25 +51,25 @@ $matches = $result->fetch_all(MYSQLI_ASSOC);
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                 <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 ml-auto">
                     <li>
-                        <a href="./index" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page" <?= $current_page == 'index.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Home</a>
+                        <a href="./index" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page" <?= $current_page == 'index' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Home</a>
                     </li>
                     <li>
-                        <a href="./online-ticket" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'online-ticket.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pembelian Tiket</a>
+                        <a href="./online-ticket" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'online-ticket' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pembelian Tiket</a>
                     </li>
                     <li>
-                        <a href="./register-member" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'register-member.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pendaftaran Anggota Baru</a>
+                        <a href="./register-member" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'register-member' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pendaftaran Anggota Baru</a>
                     </li>
                     <li>
-                        <a href="./paid-tuition" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'paid-tuition.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pembayaran SPP</a>
+                        <a href="./paid-tuition" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'paid-tuition' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Pembayaran SPP</a>
                     </li>
                     <li>
-                        <a href="./about-us" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'about-us.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Tentang Kami</a>
+                        <a href="./about-us" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'about-us' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Tentang Kami</a>
                     </li>
                     <li>
-                        <a href="./gallery" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'gallery.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Gallery</a>
+                        <a href="./gallery" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'gallery' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Gallery</a>
                     </li>
                     <li>
-                        <a href="./merch" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'merch.php' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Merchandise</a>
+                        <a href="./merch" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" <?= $current_page == 'merch' ? 'text-white bg-blue-700' : 'text-gray-900 hover:bg-gray-100' ?>>Merchandise</a>
                     </li>
                 </ul>
             </div>
@@ -79,7 +79,7 @@ $matches = $result->fetch_all(MYSQLI_ASSOC);
     <main class="container mx-auto mt-8 p-4">
         <section id="ticketing" class="mb-12">
             <h2 class="text-4xl font-bold mb-4">Pembelian Tiket Pertandingan</h2>
-            <form id="ticketForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="response.php" method="POST" enctype="multipart/form-data">
+            <form id="ticketForm" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6" action="response" method="POST" enctype="multipart/form-data">
                 <div class="mb-5">
                     <label for="userName" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
                     <input type="text" id="userName" name="userName" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama Anda" required />
@@ -128,14 +128,10 @@ $matches = $result->fetch_all(MYSQLI_ASSOC);
 
                     <div class="mb-4">
                         <label for="match" class="block mb-2 text-sm font-medium text-gray-900">Pilih Pertandingan:</label>
-                        <select id="match" name="match"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5
-                                       focus:ring-blue-500 focus:border-blue-500">
+                        <select id="match" name="match" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 focus:ring-blue-500 focus:border-blue-500">
                             <option value="">-- Pilih Pertandingan --</option>
-                            <option value="loyola">Golden Phoenix vs SMA Loyola, 5 Oktober 2024</option>
-                            <option value="sedes">Golden Phoenix vs SMA Sedes Sapientiae, 12 Oktober 2024</option>
                             <?php foreach ($matches as $match): ?>
-                                <option value="<?= $match['id'] ?>">
+                                <option value="<?= $match['id'] ?>" data-name="<?= htmlspecialchars($match['match_name']) ?>" data-date="<?= date('Y-m-d', strtotime($match['match_date'])) ?>">
                                     <?= htmlspecialchars($match['match_name']) ?>, <?= date('d F Y', strtotime($match['match_date'])) ?>
                                 </option>
                             <?php endforeach; ?>
@@ -166,6 +162,10 @@ $matches = $result->fetch_all(MYSQLI_ASSOC);
         </div>
     </footer>
 
+    <input type="hidden" name="match_name" id="match_name" value="">
+    <input type="hidden" name="match_date" id="match_date" value="">
+
+
     <script src="./scripts/script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -177,6 +177,19 @@ $matches = $result->fetch_all(MYSQLI_ASSOC);
                 navMenu.classList.toggle('block');
             });
         });
+
+        document.getElementById('match').addEventListener('change', function() {
+            var selectedOption = this.options[this.selectedIndex];
+            var matchName = selectedOption.getAttribute('data-name');
+            var matchDate = selectedOption.getAttribute('data-date');
+
+            document.getElementById('match_name').value = matchName;
+            document.getElementById('match_date').value = matchDate;
+
+            console.log('Selected Match Name:', matchName);
+            console.log('Selected Match Date:', matchDate);
+        });
+
     </script>
 </body>
 

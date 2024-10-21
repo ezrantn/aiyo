@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmtPembayaran->bind_param("sdss", $memberID, $payAmount, $paymentMethod, $invoiceId);
 
         if ($stmtPembayaran->execute()) {
-            header("Location: tuition-check.php?invoiceId=$invoiceId&accessToken=$accessToken");
+            header("Location: tuition-check?invoiceId=$invoiceId&accessToken=$accessToken");
             exit();
         } else {
             echo "Error inserting into pembayaran: " . $stmtPembayaran->error;

@@ -9,14 +9,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             case 'add':
                 $match_name = $conn->real_escape_string($_POST['match_name']);
                 $match_date = $conn->real_escape_string($_POST['match_date']);
-                $query = "INSERT INTO matches (match_name, match_date) VALUES ('$match_name', '$match_date')";
+                $match_location = $conn->real_escape_string($_POST['match_location']);
+                $query = "INSERT INTO matches (match_name, match_date, match_location) VALUES ('$match_name', '$match_date', '$match_location')";
                 $conn->query($query);
                 break;
             case 'edit':
                 $id = intval($_POST['id']);
                 $match_name = $conn->real_escape_string($_POST['match_name']);
                 $match_date = $conn->real_escape_string($_POST['match_date']);
-                $query = "UPDATE matches SET match_name = '$match_name', match_date = '$match_date' WHERE id = $id";
+                $match_location = $conn->real_escape_string($_POST['match_location']);
+                $query = "UPDATE matches SET match_name = '$match_name', match_date = '$match_date', match_location = '$match_location' WHERE id = $id";
                 $conn->query($query);
                 break;
             case 'delete':
@@ -38,83 +40,141 @@ $matches = $result->fetch_all(MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Matches | Admin Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/goldenphoenix/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/goldenphoenix/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/goldenphoenix/assets/favicon-16x16.png">
+    <link rel="manifest" href="/goldenphoenix/manifest.json">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
-    <div class="container mx-auto p-6">
-        <h1 class="text-2xl font-bold mb-6">Manage Matches</h1>
-
-        <!-- Add new match form -->
-        <form action="" method="POST" class="mb-8 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <h2 class="text-xl font-semibold mb-4">Add New Match</h2>
-            <input type="hidden" name="action" value="add">
-            <div class="mb-4">
-                <label for="match_name" class="block text-gray-700 text-sm font-bold mb-2">Match Name:</label>
-                <input type="text" id="match_name" name="match_name" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+<body class="bg-gray-100 font-sans">
+    <div id="dashboard" class="flex flex-col md:flex-row min-h-screen">
+        <div class="w-full md:w-64 bg-gray-800 shadow-xl p-6 h-full text-white">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold">Admin Dashboard</h2>
+                <img src="/goldenphoenix/assets/logo.png" alt="Logo" class="w-10 h-10 rounded-full">
             </div>
-            <div class="mb-4">
-                <label for="match_date" class="block text-gray-700 text-sm font-bold mb-2">Match Date:</label>
-                <input type="date" id="match_date" name="match_date" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Match</button>
-        </form>
 
-        <!-- List of existing matches -->
-        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <h2 class="text-xl font-semibold mb-4">Existing Matches</h2>
-            <table class="w-full">
-                <thead>
-                    <tr>
-                        <th class="px-4 py-2">Match Name</th>
-                        <th class="px-4 py-2">Match Date</th>
-                        <th class="px-4 py-2">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($matches as $match): ?>
-                        <tr>
-                            <td class="border px-4 py-2"><?= htmlspecialchars($match['match_name']) ?></td>
-                            <td class="border px-4 py-2"><?= htmlspecialchars($match['match_date']) ?></td>
-                            <td class="border px-4 py-2">
-                                <form action="" method="POST" class="inline">
-                                    <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="id" value="<?= $match['id'] ?>">
-                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button>
-                                </form>
-                                <button onclick="editMatch(<?= $match['id'] ?>, '<?= htmlspecialchars($match['match_name']) ?>', '<?= $match['match_date'] ?>')" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+            <ul class="space-y-4">
+                <li>
+                    <a href="./dashboard" class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9.75v7.5c0 1.379 1.12 2.5 2.5 2.5h13c1.38 0 2.5-1.121 2.5-2.5v-7.5"></path><path d="M21 9.75v-3.5a2.5 2.5 0 00-2.5-2.5h-13A2.5 2.5 0 003 6.25v3.5"></path></svg>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./register-history" class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v4m0 4h.01"></path><path d="M21 16.05A9.9 9.9 0 0012.15 3H12a9.9 9.9 0 00-9.9 9.9v.1a9.9 9.9 0 009.9 9.9h.15A9.9 9.9 0 0021 16.05z"></path></svg>
+                        <span>List Pendaftaran Member</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./tuition-history" class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v4m0 4h.01"></path><path d="M21 16.05A9.9 9.9 0 0012.15 3H12a9.9 9.9 0 00-9.9 9.9v.1a9.9 9.9 0 009.9 9.9h.15A9.9 9.9 0 0021 16.05z"></path></svg>
+                        <span>List Pembayaran SPP Member</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./manage-matches" class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v4m0 4h.01"></path><path d="M21 16.05A9.9 9.9 0 0012.15 3H12a9.9 9.9 0 00-9.9 9.9v.1a9.9 9.9 0 009.9 9.9h.15A9.9 9.9 0 0021 16.05z"></path></svg>
+                        <span>Atur Jadwal Pertandingan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./log-out.php" class="flex items-center space-x-3 p-3 bg-red-500 rounded-lg hover:bg-red-600 transition duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 16l4-4m0 0l-4-4m4 4H7"></path><path d="M12 19H5a2 2 0 01-2-2V7a2 2 0 012-2h7"></path></svg>
+                        <span>Log Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-grow p-4 md:p-6 lg:p-8">
+            <h1 class="text-2xl md:text-3xl font-extrabold mb-6 text-gray-800">Manage Matches</h1>
+
+            <!-- Add New Match Form -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-6">
+                <div class="px-4 py-3 bg-gray-800 text-white">
+                    <h2 class="text-lg font-semibold">Add New Match</h2>
+                </div>
+                <form action="" method="POST" class="px-4 py-6">
+                    <input type="hidden" name="action" value="add">
+                    <div class="mb-4">
+                        <label for="match_name" class="block text-sm font-medium text-gray-700">Match Name</label>
+                        <input type="text" id="match_name" name="match_name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
+                    </div>
+                    <div class="mb-4">
+                        <label for="match_location" class="block text-sm font-medium text-gray-700">Match Location</label>
+                        <input type="text" id="match_date" name="match_location" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
+                    </div>
+                    <div class="mb-4">
+                        <label for="match_date" class="block text-sm font-medium text-gray-700">Match Date</label>
+                        <input type="date" id="match_date" name="match_date" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
+                    </div>
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Match</button>
+                </form>
+            </div>
+
+            <!-- Existing Matches List -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <div class="px-4 py-3 bg-gray-800 text-white">
+                    <h2 class="text-lg font-semibold">Existing Matches</h2>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full table-auto">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Match Name</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Match Location</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Match Date</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <?php foreach ($matches as $match): ?>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><?= htmlspecialchars($match['match_name']) ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><?= htmlspecialchars($match['match_location']) ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= htmlspecialchars($match['match_date']) ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <!-- Edit Button -->
+                                    <button onclick="editMatch(<?= $match['id'] ?>, '<?= htmlspecialchars($match['match_name']) ?>', '<?= $match['match_date'] ?>')" class="text-yellow-600 hover:text-yellow-900 mr-2">Edit</button>
+
+                                    <!-- Delete Form -->
+                                    <form action="" method="POST" class="inline">
+                                        <input type="hidden" name="action" value="delete">
+                                        <input type="hidden" name="id" value="<?= $match['id'] ?>">
+                                        <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Edit Modal -->
     <div id="editModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
-        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-            </div>
-            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                <form id="editForm" action="" method="POST" class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-gray-500 bg-opacity-75 transition-opacity"></div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-xl">
+                <form id="editForm" action="" method="POST" class="px-4 py-6">
                     <input type="hidden" name="action" value="edit">
                     <input type="hidden" id="edit_id" name="id">
                     <div class="mb-4">
-                        <label for="edit_match_name" class="block text-gray-700 text-sm font-bold mb-2">Match Name:</label>
-                        <input type="text" id="edit_match_name" name="match_name" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <label for="edit_match_name" class="block text-sm font-medium text-gray-700">Match Name</label>
+                        <input type="text" id="edit_match_name" name="match_name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
                     </div>
                     <div class="mb-4">
-                        <label for="edit_match_date" class="block text-gray-700 text-sm font-bold mb-2">Match Date:</label>
-                        <input type="date" id="edit_match_date" name="match_date" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <label for="edit_match_date" class="block text-sm font-medium text-gray-700">Match Date</label>
+                        <input type="date" id="edit_match_date" name="match_date" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm">
                     </div>
-                    <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                        <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
-                            Update
-                        </button>
-                        <button type="button" onclick="closeEditModal()" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                            Cancel
-                        </button>
+                    <div class="flex justify-end space-x-4">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Update</button>
+                        <button type="button" onclick="closeEditModal()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded">Cancel</button>
                     </div>
                 </form>
             </div>

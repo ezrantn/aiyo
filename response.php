@@ -1,6 +1,8 @@
 <?php
 include "token.php";
 
+session_start();
+
 date_default_timezone_set('Asia/Jakarta');
 $env = parse_ini_file(".env");
 
@@ -10,7 +12,6 @@ $userPhone = $_POST['userPhone'];
 $remarks = $_POST['remarks'];
 
 $userPhone = str_replace("-", "", $userPhone);
-
 $referenceId = "GP2024" . date("mdHis");
 $expireTime = date('Y-m-d\TH:i', strtotime('+3 hours'));
 
@@ -32,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $bodyCreateInvoice = array(
-    "invoiceName" => "Golden Phoenix Basketball Team",
+    "invoiceName" => "Golden Phoenix Nusaputera",
     "referenceId" => $referenceId,
     "userName" => $userName,
     "userEmail" => $userEmail,
@@ -50,7 +51,7 @@ $bodyCreateInvoice = array(
             "itemName" => ucfirst($ticketType) . " Ticket",
             "itemType" => "ITEM",
             "itemCount" => $quantity,
-            "itemTotalPrice" => $payAmount
+            "itemTotalPrice" => $payAmount,
         ),
     )
 );
@@ -87,10 +88,10 @@ if ($invoice->responseCode == '2000000') {
     $remarks = str_replace(array("'", '"', ',', ';', '<', '>', '/'), ' ', "-");
 
     $sql = "INSERT INTO transaksi
-    (referenceId, userName, userEmail, userPhone, remarks, payAmount, items, invoiceId, status, timestamp)
+    (referenceId, userName, userEmail, userPhone, remarks, payAmount, items, invoiceId, status, timestamp, match_location)
     VALUES
     ('" . $referenceId . "', '" . $userName . "', '" . $userEmail . "', '" . $userPhone . "',
-    '" . $remarks . "', '" . $payAmount . "', '" . $ticketType . "', '" . $invoiceId . "', 'NEW', current_timestamp())";
+    '" . $remarks . "', '" . $payAmount . "', '" . $ticketType . "', '" . $invoiceId . "', 'NEW', current_timestamp(), '$match_location')";
 
     if ($conn->query($sql) === TRUE) {
         // Data inserted successfully, proceed with displaying the next step
@@ -103,4 +104,4 @@ if ($invoice->responseCode == '2000000') {
 
 curl_close($chCreateInvoice);
 
-header("Location: check.php?invoiceId=$invoiceId&accessToken=$accessToken");
+header("Location: check?invoiceId=$invoiceId&accessToken=$accessToken");
